@@ -1,0 +1,60 @@
+{
+  "name": "my-magic-connect",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "./",
+  "dependencies": {
+    "@mapbox/mapbox-gl-language": "^0.10.0",
+    "bootstrap": "^4.3.1",
+    "copy-to-clipboard": "^3.3.1",
+    "history": "^4.9.0",
+    "mapbox-gl": "^1.9.0",
+    "moment": "^2.24.0",
+    "rc-pagination": "^1.20.1",
+    "react": "^16.8.6",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-datepicker": "^2.8.0",
+    "react-dom": "^16.8.6",
+    "react-intl": "^2.9.0",
+    "react-mapbox-gl": "^4.8.3",
+    "react-moment": "^0.9.2",
+    "react-redux": "^7.0.3",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "3.0.1",
+    "react-toastify": "^5.3.2",
+    "reactstrap": "^8.0.1",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.1",
+    "redux-devtools": "^3.5.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.17.1"
+  }
+}
