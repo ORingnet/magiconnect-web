@@ -1,35 +1,39 @@
 import styled from 'styled-components';
 import { Badge } from 'reactstrap';
-const StyledTitle = styled.p`
+export const StyledTitle = styled.p`
   color: #fff;
   font-size: 1.5rem;
   padding: 5px 1.5rem;
   margin: 0;
 `;
-const StyledUl = styled.ul`
+export const StyledUl = styled.ul`
   list-style: none;
   padding: 0;
+  time {
+    width: 160px;
+    display: inline-block;
+    margin-right: 1rem;
+  }
   li {
     padding: 0.5rem 1.5rem;
     margin-bottom: 5px;
     background: #f1f8ff;
     font-size: 1rem;
-    > span {
-      margin-left: 1rem;
-    }
     p {
       display: inline;
-      margin-left: 1rem;
     }
   }
 `;
-const StyledNoDataBox = styled.div`
+export const StyledNoDataBox = styled.div`
   padding: 0.5rem 1.5rem;
   background: #f1f8ff;
   font-size: 1rem;
 `;
 
-const StyledBadge = styled(Badge)`
+export const StyledBadge = styled(Badge)`
   width: 75px;
+  margin-right: 1rem;
 `;
-export { StyledTitle, StyledUl, StyledNoDataBox, StyledBadge };
+export const StyledBadgeBox = styled.div`
+  display: inline-block;
+`;

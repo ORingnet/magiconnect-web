@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import Pagination from 'rc-pagination';
 import Spinner from '../../../../components/Spinner';
 import { Button } from 'reactstrap';
-import { StyledTitle, StyledUl, StyledNoDataBox, StyledBadge } from './StyledLogContent';
+import { StyledTitle, StyledUl, StyledNoDataBox, StyledBadge, StyledBadgeBox } from './StyledLogContent';
 const LogContent = ({ machName, machId, logDialogs, getMachineLogs, searchValue, filterLogs }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -88,13 +88,15 @@ const LogContent = ({ machName, machId, logDialogs, getMachineLogs, searchValue,
           );
           const renderResult = filterResult.map((log, i) => (
             <li key={i}>
-              <Moment format='YYYY/MM/DD'>{log.logs_time}</Moment>
-              <StyledBadge color={renderLevel(log.level)}>
-                <FormattedMessage id={renderLevelText(log.level)} />
-              </StyledBadge>
-              <StyledBadge>
-                <FormattedMessage id={renderActionText(log.action)} />
-              </StyledBadge>
+              <Moment format='YYYY/MM/DD hh:mm:ss'>{log.logs_time}</Moment>
+              <StyledBadgeBox>
+                <StyledBadge color={renderLevel(log.level)}>
+                  <FormattedMessage id={renderLevelText(log.level)} />
+                </StyledBadge>
+                <StyledBadge>
+                  <FormattedMessage id={renderActionText(log.action)} />
+                </StyledBadge>
+              </StyledBadgeBox>
               <p>{log.msg}</p>
             </li>
           ));
