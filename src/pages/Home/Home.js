@@ -1,8 +1,8 @@
 import React from 'react';
-import logoImg from '../../assets/img/logo.png';
-// import banner from '../../assets/img/index/banner.jpg';
-import ButtonImg from '../../assets/img/index/button.png';
-import fiveButton from '../../assets/img/index/fiveButton.jpg';
+import logoImg from 'assets/img/logo.png';
+// import banner from 'assets/img/index/banner.jpg';
+import ButtonImg from 'assets/img/index/button.png';
+import fiveButton from 'assets/img/index/fiveButton.jpg';
 import { StyledContainer, StyledBanner, StyledButton, StyledFooter, StyledLogo } from './styledHome';
 const Home = () => {
   return (

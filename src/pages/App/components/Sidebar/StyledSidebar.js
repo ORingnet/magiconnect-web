@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import bg from '../../../../assets/img/sidebar/bg-nav.png';
+import bg from 'assets/img/sidebar/bg-nav.png';
 const StyledSidebarContainer = styled.div`
   display: none;
   position: fixed;
@@ -15,11 +15,49 @@ const StyledSidebarContainer = styled.div`
   transition: left 0.5s;
   z-index: 1;
   left: ${props => (props.siderbarIsOpen ? '0' : '-210px')};
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background: #000000;
+  }
+  &::-webkit-scrollbar-track {
+    background: #666666;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  &::-webkit-scrollbar-track:hover {
+    background: #666666;
+  }
+  &::-webkit-scrollbar-track:active {
+    background: #333333;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
   @media (max-width: 1024px) {
     display: block;
   }
   @media (max-width: 575px) {
     top: 51px;
+  }
+  @media (max-width: 320px) {
+    top: 72px;
+    height: 496px;
+    overflow-y: scroll;
   }
 `;
 const StyledUserBox = styled.div`

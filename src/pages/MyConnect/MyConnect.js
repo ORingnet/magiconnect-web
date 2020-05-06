@@ -3,9 +3,9 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../store/appStore/action';
+import { actionCreators } from 'store/appStore/action';
 import { injectIntl } from 'react-intl';
-import { continueGetMachineTime } from '../../utility/app/timeInterval';
+import { continueGetMachineTime } from 'utility/app/timeInterval';
 import ConnectFunc from './components/ConnectFunc';
 import ConnectTable from './components/ConnectTable';
 import ActiveConnection from './components/ActiveConnection';
@@ -55,19 +55,24 @@ const MyConnect = ({
       if (machine.mach_id === appState.connectMachId) {
         return {
           ...machine,
-          sortValue: 4
+          sortValue: 5
         };
       } else if (machine.mach_status === 'Connecting') {
         return {
           ...machine,
-          sortValue: 3
+          sortValue: 4
         };
       } else if (machine.mach_status === 'Connected') {
         return {
           ...machine,
-          sortValue: 2
+          sortValue: 3
         };
       } else if (machine.mach_status === 'On-Line') {
+        return {
+          ...machine,
+          sortValue: 2
+        };
+      } else if (machine.mach_status === 'updating') {
         return {
           ...machine,
           sortValue: 1

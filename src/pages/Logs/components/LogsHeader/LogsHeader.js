@@ -1,11 +1,11 @@
 import React from 'react';
-import * as ROUTES from '../../../../router';
+import * as ROUTES from 'router';
 import { withRouter } from 'react-router-dom';
 import { FormattedHTMLMessage } from 'react-intl';
-import backIcon from '../../../../assets/img/information/icon-back.png';
-import filterIcon from '../../../../assets/img/information/icon-search.png';
-import exportIcon from '../../../../assets/img/information/icon-export.png';
-import undoIcon from '../../../../assets/img/information/icon-undo.png';
+import backIcon from 'assets/img/information/icon-back.png';
+import filterIcon from 'assets/img/information/icon-search.png';
+import exportIcon from 'assets/img/information/icon-export.png';
+import undoIcon from 'assets/img/information/icon-undo.png';
 import { StyledBackground, StyledFuncBox } from './StyledLogsHeader';
 const LogsHeader = ({ toggleFilterModal, history, machId, setSearchValue }) => {
   const handleReturnConnect = () => {

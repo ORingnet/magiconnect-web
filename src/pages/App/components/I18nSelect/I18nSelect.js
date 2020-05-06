@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../../../store/langStore/action';
-import { actionCreators as appActionCreators } from '../../../../store/appStore/action';
+import { actionCreators } from 'store/langStore/action';
+import { actionCreators as appActionCreators } from 'store/appStore/action';
 import { Input } from 'reactstrap';
 const langData = [
   {

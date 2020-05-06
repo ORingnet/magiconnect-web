@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
-import StyledInput from '../../../../../components/StyledInput';
+import StyledInput from 'components/StyledInput';
 
-import editIcon from '../../../../../assets/img/myConnect/modify-device.png';
-import addIcon from '../../../../../assets/img/myConnect/plus.svg';
+import editIcon from 'assets/img/myConnect/modify-device.png';
+import addIcon from 'assets/img/myConnect/plus.svg';
 
-import plcIcon from '../../../../../assets/img/myConnect/icon-plc.png';
-import ipcamIcon from '../../../../../assets/img/myConnect/icon-ipcam.png';
-import hmiIcon from '../../../../../assets/img/myConnect/icon-hmi.png';
+import plcIcon from 'assets/img/myConnect/icon-plc.png';
+import ipcamIcon from 'assets/img/myConnect/icon-ipcam.png';
+import hmiIcon from 'assets/img/myConnect/icon-hmi.png';
 import FuncBox from '../FuncBox';
-import Modal from '../../../../../components/Modal';
+import Modal from 'components/Modal';
 
 import { Col, Form, FormGroup, FormFeedback, Label, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { StyledDropdownItem, StyledUncontrolledDropdown, StyledFormGroup } from './StyledModifyDeviceModal';

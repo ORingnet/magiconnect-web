@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import deleteIcon from '../../../../../assets/img/myConnect/delete.png';
+import deleteIcon from 'assets/img/myConnect/delete.png';
 import FuncBox from '../FuncBox';
-import DeleteModal from '../../../../../components/DeleteModal';
+import DeleteModal from 'components/DeleteModal';
 const DeleteDeviceModal = ({ machId, device, deleteDevice }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

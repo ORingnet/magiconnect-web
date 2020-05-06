@@ -2,9 +2,9 @@ import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../../store/appStore/action';
-import AllNewsHeader from './components/AllNewsHeader';
-import FilterModal from './components/FilterModal';
-import NewsContent from './components/NewsContent';
+import AllNewsHeader from 'components/AllNewsHeader';
+import FilterModal from 'components/FilterModal';
+import NewsContent from 'components/NewsContent';
 const AllNews = ({ newsDialogs, filterNewsSearchValue }) => {
   const [filterModalIsOpen, setFilterModalIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState({

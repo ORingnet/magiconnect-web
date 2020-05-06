@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import closeIcon from '../../assets/img/common/close.svg';
-import sureIcon from '../../assets/img/common/icon-v.png';
-import cancelIcon from '../../assets/img/common/icon-x.png';
-import dateIcon from '../../assets/img/common/date.png';
+import closeIcon from 'assets/img/common/close.svg';
+import sureIcon from 'assets/img/common/icon-v.png';
+import cancelIcon from 'assets/img/common/icon-x.png';
+import dateIcon from 'assets/img/common/date.png';
 import Spinner from '../Spinner';
 import { Row, Col } from 'reactstrap';
 import {
@@ -15,6 +15,19 @@ import {
   StyledIcon,
   StyledTitle
 } from './StyledModal';
+/**
+ * @constructor
+ * 用在新增及修改上的 modal 基底
+ * @param  {jsx} children - 要顯示進來的內容
+ * @param  {string} title - 小標題
+ * @param  {number} [titleSmColWidth=5] - 小標題在 sm 大小的寬
+ * @param  {boolen} isOpen - modal 開關
+ * @param  {function} toggle - 控制 modal 的開關
+ * @param  {function} closeModal - 關閉 modal
+ * @param  {boolen} isLoading - loading 狀態
+ * @param  {function} handleSubmit - 按下確認鈕執行的事
+ * @param  {function} checkSubmit - 當滿足條件才能執行，回傳布林值
+ */
 const Modal = ({
   children,
   title,

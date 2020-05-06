@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
-import switchStatus from '../../../../components/SwitchStatus';
-import Spinner from '../../../../components/Spinner';
+import switchStatus from 'components/SwitchStatus';
+import Spinner from 'components/Spinner';
 import Pagination from 'rc-pagination';
 import {
   StyledTableCotainer,
@@ -106,7 +106,7 @@ const connectTable = ({
               ischecked={machine.ischecked}
             >
               <td>
-                <input type='checkbox' id={machine.mach_id} checked={machine.ischecked} onChange={handleDoNothing} />
+                <input type='radio' id={machine.mach_id} checked={machine.ischecked} onChange={handleDoNothing} />
               </td>
               <StyledTd
                 color={switchStatus(machine.mach_status).color}

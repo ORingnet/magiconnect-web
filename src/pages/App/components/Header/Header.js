@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as ROUTERS from '../../../../router';
-import logoSrc from '../../../../assets/img/logo.png';
+import * as ROUTERS from 'router';
+import logoSrc from 'assets/img/logo.png';
 import I18nSelect from '../I18nSelect';
 import AccountMsg from './AccountMsg';
 import AddMagicConnet from './AddMagicConnet';

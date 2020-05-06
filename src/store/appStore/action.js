@@ -95,17 +95,8 @@ export const actionCreators = {
           // 如果 token 過期踢出去
           history.push(ROUTERS.HOME);
         } else {
-          const deleteMachine = originalMachines.find(machine => machine.mach_id === requestArr[i]);
-          toast.error(
-            <Fragment>
-              <span className='mr-2'>{deleteMachine.mach_name}</span>
-              <FormattedMessage id='connectMachine.delete' />
-            </Fragment>,
-            {
-              position: toast.POSITION.TOP_RIGHT
-            }
-          );
-          dispatch({ type: actionTypes.RECEIVE_MACHINE_HAS_DELETE, machineId: deleteMachine.mach_id });
+          const updatingMachine = originalMachines.find(machine => machine.mach_id === requestArr[i]);
+          dispatch({ type: actionTypes.RECEIVE_MACHINE_UPDATING, machineId: updatingMachine.mach_id });
         }
       } else {
         const userEmail = getState().app.accountMsg.acc_mail;

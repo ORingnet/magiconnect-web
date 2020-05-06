@@ -6,13 +6,42 @@ import CopyModal from '../CopyModal';
 import { selectObj } from './selectObj';
 import { StyledShowMachineID } from './StyledModifyMachineModal';
 import { Col, CustomInput, FormGroup, FormFeedback, Label, Form } from 'reactstrap';
+/**
+ * @constructor
+ * 確認當長度超過 110 個字元的時候
+ * @param {string} string 要檢查的文字
+ */
 const checkLength = string => string.length >= 110;
+/**
+ * @constructor
+ * 檢查 mac 是不是符合規則
+ * @param {string} string 要檢查的文字
+ */
 const checkMacAddressOnly = string => string !== '' && !/([A-Z0-9]{2}[:]){5}[A-Z0-9]{2}/g.test(string);
+/**
+ * @constructor
+ * 檢查 SerialNumber 是不是符合規則
+ * @param {string} string 要檢查的文字
+ */
 const chcekSerialNumber = string => string === '' || string.length !== 12;
-
+/**
+ * @constructor
+ * 用在新增及修改的 modal
+ * @param  {boolen} isOpen - modal 開關
+ * @param  {function} toggleModal - 控制 modal 的開關
+ * @param  {function} addMachine - 執行新增 machine
+ * @param  {function} modifyMachine - 執行修改 machine
+ * @param  {Object} machineObj - 該 machine 的參數
+ * @param  {function} intl - i18n
+ * @param  {string} modifyWay - 決定是新增(add)還是修改(edit)
+ * @param  {string} title - 小標題
+ * @param  {function} toggleCopyMachineIdModal - 當新增完之後會觸發的複製 modal
+ * @param  {string} addNewMachineId - 新增完要複製的ID
+ * @param {boolen} copyMachineIdModalIsOpen - 複製 modal 的開關
+ */
 const ModifyModal = ({
   isOpen,
-  toogleModal,
+  toggleModal,
   addMachine,
   modifyMachine,
   machineObj,
@@ -185,7 +214,7 @@ const ModifyModal = ({
   };
 
   const handleCloseModal = () => {
-    toogleModal();
+    toggleModal();
     setLng(machineObj && machineObj.mach_lng ? machineObj.mach_lng : '');
     setLat(machineObj && machineObj.mach_lat ? machineObj.mach_lat : '');
     setSerialNumber(machineObj && machineObj.mach_sn ? machineObj.mach_sn : '');
@@ -364,7 +393,7 @@ const ModifyModal = ({
     <Form>
       <Modal
         isOpen={isOpen}
-        toggle={toogleModal}
+        toggle={toggleModal}
         closeModal={handleCloseModal}
         isLoading={isLoading}
         handleSubmit={handleSubmit}

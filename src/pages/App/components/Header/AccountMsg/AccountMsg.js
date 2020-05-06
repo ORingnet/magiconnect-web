@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 import copy from 'copy-to-clipboard';
-import { actionCreators } from '../../../../../store/appStore/action';
-import switchStatus from '../../../../../components/SwitchStatus';
-import { continueGetAccountTime } from '../../../../../utility/app/timeInterval';
+import { actionCreators } from 'store/appStore/action';
+import switchStatus from 'components/SwitchStatus';
+import { continueGetAccountTime } from 'utility/app/timeInterval';
 import { UncontrolledDropdown, Dropdown, DropdownMenu, DropdownItem, Spinner } from 'reactstrap';
 import {
   StyledContainer,

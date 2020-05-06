@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../store/appStore/action';
+import { actionCreators } from 'store/appStore/action';
 import { withRouter } from 'react-router-dom';
 import LogsHeader from './components/LogsHeader';
 import FilterModal from './components/FilterModal';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import DatePicker from 'react-datepicker';
-import Modal from '../../../../components/Modal';
+import Modal from 'components/Modal';
 import { actionOptions, levelOptions } from './options/options';
 import { Row, Col, Input } from 'reactstrap';
 import { StyledDatePickerBox } from './StyledFilterModal';

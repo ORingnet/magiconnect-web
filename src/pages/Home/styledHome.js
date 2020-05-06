@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import backImg from '../../assets/img/index/background.jpg';
-import banner from '../../assets/img/index/banner.jpg';
+import backImg from 'assets/img/index/background.jpg';
+import banner from 'assets/img/index/banner.jpg';
 const StyledContainer = styled.div`
   width: 100%;
   padding-top: 1%;

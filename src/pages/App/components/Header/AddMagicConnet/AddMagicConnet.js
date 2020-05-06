@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
-import addIcon from '../../../../../assets/img/header/add_connet.png';
-import ModifyMachineModal from '../../../../../components/ModifyMachineModal';
+import addIcon from 'assets/img/header/add_connet.png';
+import ModifyMachineModal from 'components/ModifyMachineModal';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../../../../store/appStore/action';
+import { actionCreators } from 'store/appStore/action';
 import { StyledImg } from './StyledAddMagicConnet';
 import { StyledUncontrolledTooltip } from '../StyledHeader';
+const title = 'Add new gateway';
 const AddMagicConnet = ({
   toggleAddConnect,
   addConnectIsOpen,
@@ -18,16 +19,16 @@ const AddMagicConnet = ({
   return (
     <Fragment>
       <StyledImg src={addIcon} alt='' onClick={toggleAddConnect} id='addIcon' />
-      <StyledUncontrolledTooltip target='addIcon'>New My Connect</StyledUncontrolledTooltip>
+      <StyledUncontrolledTooltip target='addIcon'>{title}</StyledUncontrolledTooltip>
       <ModifyMachineModal
         modifyWay='add'
         addMachine={addMachine}
         isOpen={addConnectIsOpen}
-        toogleModal={toggleAddConnect}
+        toggleModal={toggleAddConnect}
         toggleCopyMachineIdModal={toggleCopyMachineIdModal}
         addNewMachineId={copyMachineIdText}
         copyMachineIdModalIsOpen={copyMachineIdModalIsOpen}
-        title='New My Connect'
+        title={title}
       />
     </Fragment>
   );

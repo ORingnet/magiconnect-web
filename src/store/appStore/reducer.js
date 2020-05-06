@@ -126,9 +126,18 @@ const reducer = (state = initialState, action) => {
       };
     }
     // 持續接收 machines 新的資料
-    // 被刪除的話
-    case actionTypes.RECEIVE_MACHINE_HAS_DELETE: {
-      const newMachines = state.machines.filter(machine => machine.mach_id !== action.machineId);
+    // 如果找不到
+    case actionTypes.RECEIVE_MACHINE_UPDATING: {
+      const newMachines = state.machines.map(machine => {
+        if (machine.mach_id === action.machineId) {
+          return {
+            ...machine,
+            mach_status: 'updating'
+          };
+        } else {
+          return machine;
+        }
+      });
       const isConnect = state.connectMachId === action.machineId;
       const newConnectData = isConnect
         ? state.connectData

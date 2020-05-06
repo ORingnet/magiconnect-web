@@ -1,5 +1,5 @@
 import React from 'react';
-import logIcon from '../../../../../assets/img/header/icon-log.png';
+import logIcon from 'assets/img/header/icon-log.png';
 import { StyledUncontrolledTooltip } from '../StyledHeader';
 import { StyledImg, StyledImgContainer, StyledBadge } from './StyledShowNewsBtn';
 const ShowNewsBtn = ({ newsDialogs, toggleNews }) => {

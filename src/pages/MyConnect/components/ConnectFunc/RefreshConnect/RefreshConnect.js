@@ -1,5 +1,8 @@
 import React from 'react';
-import refreshIcon from '../../../../../assets/img/myConnect/refresh.png';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from 'store/appStore/action';
+import refreshIcon from 'assets/img/myConnect/refresh.png';
 import FuncBox from '../FuncBox';
 const RefreshConnect = ({ getAllMachine, getDevice, changePage, connectMachine, refreshMachine }) => {
   const handleRefresh = () => {
@@ -17,5 +20,7 @@ const RefreshConnect = ({ getAllMachine, getDevice, changePage, connectMachine, 
     />
   );
 };
-
-export default RefreshConnect;
+export default connect(
+  state => state.app,
+  dispatch => bindActionCreators(actionCreators, dispatch)
+)(RefreshConnect);

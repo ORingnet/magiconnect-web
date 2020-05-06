@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import { actionCreators } from '../../../../store/appStore/action';
+import { actionCreators } from 'store/appStore/action';
 import { FormattedMessage } from 'react-intl';
-import * as ROUTERS from '../../../../router';
+import * as ROUTERS from 'router';
 import Moment from 'react-moment';
-import newsIcon from '../../../../assets/img/newsModal/icon-f-all.png';
-import closeIcon from '../../../../assets/img/header/icon-f-close.png';
+import newsIcon from 'assets/img/newsModal/icon-f-all.png';
+import closeIcon from 'assets/img/header/icon-f-close.png';
 import { StyledLogDialog, StyledLogContent, StyledLogFooter, StyledLogFooterBtn, StyledBadge } from './StyledNewsModal';
 const NewsModal = ({ newsDialogs, showNewsIsOpen, toggleNews, history }) => {
   const handleLinkToAllNews = () => {

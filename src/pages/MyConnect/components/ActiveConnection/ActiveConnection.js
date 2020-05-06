@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../../../store/appStore/action';
-import peopleIcon from '../../../../assets/img/myConnect/icon-people.png';
-import machIcon from '../../../../assets/img/myConnect/icon-mach.png';
-import FixedLoading from '../../../../components/FixedLoading';
-import plcIcon from '../../../../assets/img/myConnect/icon-plc.png';
-import ipcamIcon from '../../../../assets/img/myConnect/icon-ipcam.png';
-import hmiIcon from '../../../../assets/img/myConnect/icon-hmi.png';
+import { actionCreators } from 'store/appStore/action';
+import peopleIcon from 'assets/img/myConnect/icon-people.png';
+import machIcon from 'assets/img/myConnect/icon-mach.png';
+import FixedLoading from 'components/FixedLoading';
+import plcIcon from 'assets/img/myConnect/icon-plc.png';
+import ipcamIcon from 'assets/img/myConnect/icon-ipcam.png';
+import hmiIcon from 'assets/img/myConnect/icon-hmi.png';
 import DeleteDeviceModal from './DeleteDeviceModal';
 import ModifyDeviceModal from './ModifyDeviceModal';
 import { Input } from 'reactstrap';
@@ -74,7 +74,13 @@ const ActiveConnection = ({
               {renderTypeImg(datum.device_type)}
               <StyledDeviceDetail>
                 <span className='ml-3'>{datum.device_name}</span>
-                <span className='ml-3'>{datum.device_ip}</span>
+                {datum.device_ip ? (
+                  <a className='ml-3' href={`http://${datum.device_ip}`} target='_blink' rel='noopener noreferrer'>
+                    {datum.device_ip}
+                  </a>
+                ) : (
+                  <Fragment />
+                )}
                 <span className='ml-3'>{datum.device_mask}</span>
                 <span className='ml-3'>{datum.device_proto}</span>
                 <span className='ml-3'>{datum.device_descr}</span>
@@ -118,8 +124,12 @@ const ActiveConnection = ({
                 <img src={machIcon} alt='' />
                 <div>
                   <span>{connectMachName}</span>
-                  <span>{connectData.machine.mach_wanip}</span>
-                  <span>{connectData.machine.mach_lanip}</span>
+                  <a href={connectData.machine.mach_wanip} target='_blink' rel='noopener noreferrer'>
+                    {connectData.machine.mach_wanip}
+                  </a>
+                  <span href={connectData.machine.mach_lanip} target='_blink' rel='noopener noreferrer'>
+                    {connectData.machine.mach_lanip}
+                  </span>
                   <span>{connectData.machine.mach_descr}</span>
                 </div>
               </StyledConnectInfoTitle>

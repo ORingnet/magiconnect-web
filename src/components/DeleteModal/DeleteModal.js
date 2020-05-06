@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import sureIcon from '../../assets/img/common/icon-v.png';
-import cancelIcon from '../../assets/img/common/icon-x.png';
+import sureIcon from 'assets/img/common/icon-v.png';
+import cancelIcon from 'assets/img/common/icon-x.png';
 import Spinner from '../Spinner';
 import {
   StyledModal,
@@ -11,6 +11,16 @@ import {
   StyledTitle,
   StyledClickBox
 } from './StyledDeleteModal';
+/**
+ * @constructor
+ * 刪除的 modal
+ * @param  {boolen} isOpen modal 的開關
+ * @param  {boolen} isLoading 控制確認按鈕進入 loading
+ * @param  {function} toggle 控制 modal 的開關
+ * @param  {function} handleSubmit 送出刪除指令
+ * @param  {string} name 顯示要刪除的代表文字
+ * @function renderDeleteButton 顯示確認按鈕
+ */
 const DeleteModal = ({ isOpen, isLoading, toggle, handleSubmit, name }) => {
   const renderDeleteButton = () => {
     if (!isLoading) {

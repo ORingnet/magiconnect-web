@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import momentFunc from 'moment';
 import { FormattedMessage } from 'react-intl';
 import Pagination from 'rc-pagination';
-import Spinner from '../../../../components/Spinner';
+import Spinner from 'components/Spinner';
 import { Button } from 'reactstrap';
 import { StyledTitle, StyledUl, StyledNoDataBox, StyledBadge, StyledBadgeBox } from './StyledLogContent';
 const LogContent = ({ machName, machId, logDialogs, getMachineLogs, searchValue, filterLogs }) => {
@@ -81,11 +81,11 @@ const LogContent = ({ machName, machId, logDialogs, getMachineLogs, searchValue,
             ? datum
             : momentFunc(momentFunc(searchValue.endTime).add(1, 'days')).isAfter(datum.timestamp)
         );
-
         if (filterSearchEndTime.length > 0) {
           const filterResult = filterSearchEndTime.filter(
             (_, i) => i >= currentPage * 20 && i < (currentPage + 1) * 20
           );
+
           const renderResult = filterResult.map((log, i) => (
             <li key={i}>
               <Moment format='YYYY/MM/DD hh:mm:ss'>{log.logs_time}</Moment>
@@ -105,7 +105,7 @@ const LogContent = ({ machName, machId, logDialogs, getMachineLogs, searchValue,
               <StyledUl>{renderResult}</StyledUl>
               <div className='d-flex justify-content-end mr-3'>
                 <Pagination
-                  total={filterResult.length}
+                  total={filterSearchEndTime.length}
                   onChange={handlePagination}
                   className='pagination'
                   showTitle={false}

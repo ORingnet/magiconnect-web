@@ -1,18 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actionCreators } from '../../../../store/appStore/action';
+import { actionCreators } from 'store/appStore/action';
 import { FormattedMessage } from 'react-intl';
 import I18nSelect from '../I18nSelect';
-import switchStatus from '../../../../components/SwitchStatus';
-import homeIcon from '../../../../assets/img/sidebar/icon-home.png';
-import addIcon from '../../../../assets/img/common/icon-add.png';
-// import newsIcon from '../../../../assets/img/common/icon-news.png';
-import mapIcon from '../../../../assets/img/sidebar/icon-map.png';
-import leftIcon from '../../../../assets/img/sidebar/icon-left.svg';
-import logoutIcon from '../../../../assets/img/sidebar/icon-logout.png';
-import downloadIcon from '../../../../assets/img/sidebar/icon-download.svg';
-import fileIcon from '../../../../assets/img/sidebar/icon-file.svg';
+import switchStatus from 'components/SwitchStatus';
+import homeIcon from 'assets/img/sidebar/icon-home.png';
+import addIcon from 'assets/img/common/icon-add.png';
+// import newsIcon from 'assets/img/common/icon-news.png';
+import mapIcon from 'assets/img/sidebar/icon-map.png';
+import leftIcon from 'assets/img/sidebar/icon-left.svg';
+import logoutIcon from 'assets/img/sidebar/icon-logout.png';
+import downloadIcon from 'assets/img/sidebar/icon-download.svg';
+import fileIcon from 'assets/img/sidebar/icon-file.svg';
 // import { Badge } from 'reactstrap';
 import {
   StyledSidebarContainer,
@@ -81,6 +81,10 @@ const Sidebar = ({
         <img src={mapIcon} alt='' />
         <FormattedMessage id='sidebar.map' />
       </StyledFuncBox>
+      {/* <StyledFuncBox onClick={toggleMap}>
+        <img src={mapIcon} alt='' />
+        <span>重新整理</span>
+      </StyledFuncBox> */}
       <StyledFuncBox>
         <img src={downloadIcon} alt='' />
         <StyledALink href={`${process.env.REACT_APP_API_URL}/utility/download`} fontsize='14'>
