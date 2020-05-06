@@ -75,7 +75,7 @@ const zh = {
   'myConnect.header.connect': '連線',
   'myConnect.header.connect.userOffline': '使用者離線狀態下不能連線',
   'myConnect.header.connect.machineOffline': '機台離線狀態下不能連線',
-  'myConnect.header.connect.machineConnected': '機台已連線狀態下不能連線',
+  'myConnect.header.connect.machineConnected': '機台已連線或連線中狀態下不能連線',
   'myConnect.header.connect.machineAdminConnected': '正在連線狀態下不能再連線',
   'myConnect.header.disconnect': '斷線',
   'myConnect.header.disconnect.selfConnected': '只可以對自己連線的機台進行斷線',

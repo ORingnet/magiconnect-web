@@ -39,7 +39,7 @@ const ConnectAction = ({ machineObj, connectMachine, changePage, connectMachId, 
           });
         }
       } else {
-        if (machineObj.mach_status !== 'Connected') {
+        if (machineObj.mach_status !== 'Connected' && machineObj.mach_status !== 'Connecting') {
           handleConnect();
         } else {
           toast.error(<FormattedMessage id='myConnect.header.connect.machineConnected' />, {

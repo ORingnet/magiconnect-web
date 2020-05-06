@@ -10,7 +10,7 @@ import ipcamIcon from 'assets/img/myConnect/icon-ipcam.png';
 import hmiIcon from 'assets/img/myConnect/icon-hmi.png';
 import DeleteDeviceModal from './DeleteDeviceModal';
 import ModifyDeviceModal from './ModifyDeviceModal';
-import { Input } from 'reactstrap';
+import { CustomInput } from 'reactstrap';
 import {
   StyledTitle,
   StyledUserBox,
@@ -19,7 +19,8 @@ import {
   StyledConnectInfoContainer,
   StyledConnectInfoTitle,
   StyledConnectDeviceInfo,
-  StyledDeviceDetail
+  StyledDeviceDetail,
+  StyledDeviceContainer
 } from './StyledActiveConnection';
 
 const ActiveConnection = ({
@@ -47,8 +48,8 @@ const ActiveConnection = ({
     }
   }, [connectData.device]);
   const handleChoiceDevice = deviceId => {
-    setDeviceArr(
-      deviceArr.map(datum => ({
+    setDeviceArr(prevState =>
+      prevState.map(datum => ({
         ...datum,
         ischecked: datum.devices_id === deviceId ? !datum.ischecked : false
       }))
@@ -69,23 +70,32 @@ const ActiveConnection = ({
       const renderDevice = () => {
         if (deviceArr.length > 0) {
           return deviceArr.map(datum => (
-            <li onClick={e => handleChoiceDevice(datum.devices_id)} key={datum.devices_id}>
-              <Input type='checkbox' checked={datum.ischecked} onChange={e => handleChoiceDevice(datum.devices_id)} />
-              {renderTypeImg(datum.device_type)}
-              <StyledDeviceDetail>
-                <span className='ml-3'>{datum.device_name}</span>
-                {datum.device_ip ? (
-                  <a className='ml-3' href={`http://${datum.device_ip}`} target='_blink' rel='noopener noreferrer'>
-                    {datum.device_ip}
-                  </a>
-                ) : (
-                  <Fragment />
-                )}
-                <span className='ml-3'>{datum.device_mask}</span>
-                <span className='ml-3'>{datum.device_proto}</span>
-                <span className='ml-3'>{datum.device_descr}</span>
-              </StyledDeviceDetail>
-            </li>
+            <StyledDeviceContainer key={datum.devices_id}>
+              <CustomInput
+                type='radio'
+                name='deviceRadio'
+                id={datum.devices_id}
+                checked={datum.ischecked}
+                onChange={() => handleChoiceDevice(datum.devices_id)}
+                className='d-inline'
+              />
+              <li onClick={() => handleChoiceDevice(datum.devices_id)}>
+                {renderTypeImg(datum.device_type)}
+                <StyledDeviceDetail>
+                  <span className='ml-3'>{datum.device_name}</span>
+                  {datum.device_ip ? (
+                    <a className='ml-3' href={`http://${datum.device_ip}`} target='_blink' rel='noopener noreferrer'>
+                      {datum.device_ip}
+                    </a>
+                  ) : (
+                    <Fragment />
+                  )}
+                  <span className='ml-3'>{datum.device_mask}</span>
+                  <span className='ml-3'>{datum.device_proto}</span>
+                  <span className='ml-3'>{datum.device_descr}</span>
+                </StyledDeviceDetail>
+              </li>
+            </StyledDeviceContainer>
           ));
         }
       };
@@ -124,12 +134,12 @@ const ActiveConnection = ({
                 <img src={machIcon} alt='' />
                 <div>
                   <span>{connectMachName}</span>
-                  <a href={connectData.machine.mach_wanip} target='_blink' rel='noopener noreferrer'>
+                  <a href={`http://${connectData.machine.mach_wanip}`} target='_blink' rel='noopener noreferrer'>
                     {connectData.machine.mach_wanip}
                   </a>
-                  <span href={connectData.machine.mach_lanip} target='_blink' rel='noopener noreferrer'>
+                  <a href={`http://${connectData.machine.mach_lanip}`} target='_blink' rel='noopener noreferrer'>
                     {connectData.machine.mach_lanip}
-                  </span>
+                  </a>
                   <span>{connectData.machine.mach_descr}</span>
                 </div>
               </StyledConnectInfoTitle>

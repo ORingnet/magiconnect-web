@@ -75,7 +75,7 @@ const cn = {
   'myConnect.header.connect': '连接',
   'myConnect.header.connect.userOffline': '用户脱机状态下不能连接',
   'myConnect.header.connect.machineOffline': '机台脱机状态下不能连接',
-  'myConnect.header.connect.machineConnected': '机台已连接状态下不能连接',
+  'myConnect.header.connect.machineConnected': '机台已连接或连接中状态下不能连接',
   'myConnect.header.connect.machineAdminConnected': '正在连接状态下不能再连接',
   'myConnect.header.disconnect': '断线',
   'myConnect.header.disconnect.selfConnected': '只可以对自己连接的机台进行断线',
