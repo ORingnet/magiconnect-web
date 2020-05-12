@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-
-const StyledBackground = styled.div`
+import { padSize } from 'utility/app/rwd';
+export const StyledBackground = styled.div`
   background: rgb(69, 142, 93);
   background: radial-gradient(circle, rgba(69, 142, 93, 1) 0%, rgba(69, 187, 193, 1) 100%);
   min-height: calc(100vh - 89px);
   position: relative;
   padding-bottom: 1rem;
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     padding-top: 83px;
   }
   @media (max-width: 575px) {
@@ -16,7 +16,7 @@ const StyledBackground = styled.div`
     padding-top: 71px;
   }
 `;
-const StyledSpinnerBox = styled.div`
+export const StyledSpinnerBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,5 +40,3 @@ const StyledSpinnerBox = styled.div`
   }
 }
 `;
-
-export { StyledBackground, StyledSpinnerBox };

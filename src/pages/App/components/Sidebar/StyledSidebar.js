@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
+import { padSize } from 'utility/app/rwd';
 import bg from 'assets/img/sidebar/bg-nav.png';
 const StyledSidebarContainer = styled.div`
   display: none;
@@ -48,7 +49,7 @@ const StyledSidebarContainer = styled.div`
   &::-webkit-scrollbar-corner {
     background: transparent;
   }
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     display: block;
   }
   @media (max-width: 575px) {

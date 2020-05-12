@@ -85,6 +85,7 @@ const cn = {
   'getDevice.fall': '取得设备失败',
   // connectTable
   'connectTable.status': '状态',
+  'connectTable.action': '操作',
   'connectTable.name': '名字',
   'connectTable.description': '描述',
   'connectTable.userConnective': '连接者',

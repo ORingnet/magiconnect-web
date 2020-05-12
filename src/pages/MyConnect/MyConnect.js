@@ -9,12 +9,16 @@ import { continueGetMachineTime } from 'utility/app/timeInterval';
 import ConnectFunc from './components/ConnectFunc';
 import ConnectTable from './components/ConnectTable';
 import ActiveConnection from './components/ActiveConnection';
+import { useWindowWidth } from '@react-hook/window-size/throttled';
+
 const MyConnect = ({
   getAllMachine,
   toggleMachineChecked,
   clearAddMachineId,
   connectMachine,
   continuousGetMachine,
+  modifyMachine,
+  toggleModifyMachineModal,
   getDevice,
   appState,
   langState,
@@ -23,6 +27,7 @@ const MyConnect = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [changePage, setChangePage] = useState(false);
+  const windowWidth = useWindowWidth();
   // 初始化取得 all machine
   useEffect(() => {
     if (!langState.changeStatus && history.action === 'POP') {
@@ -152,6 +157,11 @@ const MyConnect = ({
         connectMachId={appState.connectMachId}
         currentPage={currentPage}
         changePage={handlePageChange}
+        windowWidth={windowWidth}
+        modifyMachine={modifyMachine}
+        toggleModifyMachineModal={toggleModifyMachineModal}
+        modifyMachineModalIsOpen={appState.modifyMachineModalIsOpen}
+        modifyMachineObj={appState.modifyMachineObj}
       />
       <ActiveConnection />
     </Fragment>

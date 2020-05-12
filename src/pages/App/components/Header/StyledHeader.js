@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { UncontrolledTooltip } from 'reactstrap';
-
+import { padSize } from 'utility/app/rwd';
 const StyledUncontrolledTooltip = styled(UncontrolledTooltip)`
   .bg-warning {
     color: black;
@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
   padding: 10px 30px;
   background: white;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     position: fixed;
     right: 0;
     top: 0;
@@ -47,7 +47,7 @@ const StyledCommand = styled.div`
 `;
 const StyledRightBar = styled.div`
   display: block;
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     display: none;
   }
 `;

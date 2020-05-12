@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Badge } from 'reactstrap';
+import { padSize } from 'utility/app/rwd';
 const blue = '#2d3943';
 
 const StyledLogDialog = styled.div`
@@ -12,7 +13,7 @@ const StyledLogDialog = styled.div`
   display: ${props => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
   animation: swing-in-top-fwd 0.5s ease-in-out both;
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     width: 100%;
     position: fixed;
     top: 0;
@@ -54,7 +55,7 @@ const StyledLogContent = styled.div`
     display: inline;
     margin-left: 1rem;
   }
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     max-height: 100%;
     height: 100vh;
   }
@@ -79,7 +80,7 @@ const StyledLogFooterBtn = styled.div`
   &:hover {
     opacity: 1;
   }
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     padding: 5px 10px 10px;
   }
 `;

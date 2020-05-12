@@ -82,7 +82,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
         <StyledDropdownToggle caret size='sm' color='primary'>
           ConnectClient
         </StyledDropdownToggle>
-        <DropdownMenu>
+        <DropdownMenu right>
           <StyledDropdownItem onClick={handleCopy}>
             <FormattedMessage id='header.copy' description='userInfo' />
             {isLoading ? <Spinner size='sm' className='ml-2' /> : ''}
@@ -97,7 +97,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
         <StyledDropdownToggle caret size='sm' color='primary'>
           <FormattedMessage id='header.userInfo' description='userInfo' />
         </StyledDropdownToggle>
-        <DropdownMenu>
+        <DropdownMenu right>
           <StyledDropdownItem disabled>{accountMsg.user_name}</StyledDropdownItem>
           <DropdownItem divider />
           <StyledDropdownItem disabled>{accountMsg.acc_mail}</StyledDropdownItem>

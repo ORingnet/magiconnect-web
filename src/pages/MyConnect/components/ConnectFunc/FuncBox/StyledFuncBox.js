@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-const StyledFuncBox = styled.div`
+import { padSize } from 'utility/app/rwd';
+
+export const StyledFuncBox = styled.div`
   display: flex;
   align-items: center;
   color: white;
@@ -14,7 +16,7 @@ const StyledFuncBox = styled.div`
       background: linear-gradient(7deg, #711ea1 0%, #fd1515 100%);
     }
   }
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     margin-left: 0;
   }
   > span {
@@ -38,7 +40,7 @@ const StyledFuncBox = styled.div`
         width: 23px;
       }
     }
-    @media (max-width: 1024px) {
+    @media (max-width: ${padSize}) {
       margin-right: 0;
       width: 50px;
       height: 50px;
@@ -51,4 +53,3 @@ const StyledFuncBox = styled.div`
     }
   }
 `;
-export { StyledFuncBox };

@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from 'store/appStore/action';
 import searchIcon from 'assets/img/myConnect/icon-search.png';
-import ModifyModal from './ModifyModal';
+// import ModifyModal from './ModifyModal';
 import DeleteAction from './DeleteAction';
-import LinkToLogs from './LinkToLogs';
+// import LinkToLogs from './LinkToLogs';
 import RefreshConnect from './RefreshConnect';
-import ConnectAction from './ConnectAction';
-import DisconnectAction from './DisconnectAction';
+// import ConnectAction from './ConnectAction';
+// import DisconnectAction from './DisconnectAction';
 import { Container, Row, Col } from 'reactstrap';
 import { StyledTitle, StyledFuncContainer, StyledInputContainer } from './StyledConnectFunc';
-const ConnectHeader = ({ searchValue, searchMachineAction, siderbarIsOpen, machines, changePage }) => {
-  const [machineObj, setMachineObj] = useState('');
-  useEffect(() => {
-    const machineIsChecked = machines.find(machine => machine.ischecked === true);
-    if (machineIsChecked) {
-      setMachineObj(machineIsChecked);
-    } else {
-      setMachineObj('');
-    }
-  }, [machines]);
+const ConnectHeader = ({ searchValue, searchMachineAction, siderbarIsOpen, changePage }) => {
   return (
     <Container fluid className='py-2 px-4'>
       <Row>
@@ -28,12 +19,12 @@ const ConnectHeader = ({ searchValue, searchMachineAction, siderbarIsOpen, machi
           <div className='d-flex'>
             <StyledTitle>My Gateway</StyledTitle>
             <StyledFuncContainer mobilenone={siderbarIsOpen}>
-              <ModifyModal machineObj={machineObj} />
-              <DeleteAction machineObj={machineObj} />
-              <LinkToLogs ischecked={machineObj} machineObj={machineObj} />
+              {/* <ModifyModal machineObj={machineObj} /> */}
+              <DeleteAction />
+              {/* <LinkToLogs ischecked={machineObj} machineObj={machineObj} /> */}
               <RefreshConnect changePage={changePage} />
-              <ConnectAction machineObj={machineObj} changePage={changePage} />
-              <DisconnectAction machineObj={machineObj} />
+              {/* <ConnectAction machineObj={machineObj} changePage={changePage} />
+              <DisconnectAction machineObj={machineObj} /> */}
             </StyledFuncContainer>
           </div>
         </Col>

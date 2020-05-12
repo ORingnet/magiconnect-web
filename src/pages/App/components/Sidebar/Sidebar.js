@@ -13,6 +13,7 @@ import leftIcon from 'assets/img/sidebar/icon-left.svg';
 import logoutIcon from 'assets/img/sidebar/icon-logout.png';
 import downloadIcon from 'assets/img/sidebar/icon-download.svg';
 import fileIcon from 'assets/img/sidebar/icon-file.svg';
+import refreshIcon from 'assets/img/sidebar/refresh.svg';
 // import { Badge } from 'reactstrap';
 import {
   StyledSidebarContainer,
@@ -34,6 +35,10 @@ const Sidebar = ({
   siderbarIsOpen,
   toggleAddConnect,
   toggleNews,
+  refreshMachine,
+  getAllMachine,
+  connectMachine,
+  getDevice,
   toggleMap
 }) => {
   const color = switchStatus(userStatus).color;
@@ -46,6 +51,11 @@ const Sidebar = ({
   //     );
   //   }
   // };
+  const handleRefresh = () => {
+    refreshMachine();
+    getAllMachine(connectMachine, getDevice);
+    toggleSiderbar();
+  };
   return (
     <StyledSidebarContainer siderbarIsOpen={siderbarIsOpen}>
       <StyledUserBox>
@@ -81,10 +91,10 @@ const Sidebar = ({
         <img src={mapIcon} alt='' />
         <FormattedMessage id='sidebar.map' />
       </StyledFuncBox>
-      {/* <StyledFuncBox onClick={toggleMap}>
-        <img src={mapIcon} alt='' />
-        <span>重新整理</span>
-      </StyledFuncBox> */}
+      <StyledFuncBox onClick={handleRefresh}>
+        <img src={refreshIcon} alt='' />
+        <FormattedMessage id='myConnect.header.refresh' />
+      </StyledFuncBox>
       <StyledFuncBox>
         <img src={downloadIcon} alt='' />
         <StyledALink href={`${process.env.REACT_APP_API_URL}/utility/download`} fontsize='14'>

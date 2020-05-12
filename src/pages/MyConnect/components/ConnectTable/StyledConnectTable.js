@@ -1,16 +1,17 @@
 import styled from 'styled-components';
-import { Table, UncontrolledTooltip } from 'reactstrap';
-const StyledUncontrolledTooltip = styled(UncontrolledTooltip)`
+import { Table, UncontrolledTooltip, DropdownToggle, DropdownItem } from 'reactstrap';
+import { padSize } from 'utility/app/rwd';
+export const StyledUncontrolledTooltip = styled(UncontrolledTooltip)`
   .bg-warning {
     color: black;
   }
 `;
-const StyledTableCotainer = styled.div`
-  @media (max-width: 1024px) {
+export const StyledTableCotainer = styled.div`
+  @media (max-width: ${padSize}) {
     padding-bottom: ${props => (props.connectd === 'true' ? '0px' : '6rem')};
   }
 `;
-const StyledTable = styled(Table)`
+export const StyledTable = styled(Table)`
   text-align: center;
   /* table-layout: fixed; */
   thead {
@@ -24,16 +25,19 @@ const StyledTable = styled(Table)`
   td {
     word-break: break-all;
     vertical-align: middle;
-
-    &:not(:first-child) {
-      max-width: 167px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      width: calc(100% / 6);
+    max-width: 167px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: calc(100% / 7);
+    &:first-child {
+      width: auto;
+    }
+    &:nth-child(3) {
+      overflow: unset;
     }
   }
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     text-align: left;
     table-layout: fixed;
     thead {
@@ -45,8 +49,8 @@ const StyledTable = styled(Table)`
     }
     td {
       display: block;
+      max-width: none;
       &:not(:first-child) {
-        max-width: none;
         width: 100%;
       }
       &:first-child {
@@ -71,14 +75,40 @@ const StyledTable = styled(Table)`
     }
   }
 `;
-const StyledTr = styled.tr`
+export const StyledTr = styled.tr`
   background-color: ${props => (props.ischecked ? '#eff8fd' : 'white')};
   cursor: pointer;
 `;
-const StyledNodataTr = styled.tr`
+export const StyledNodataTr = styled.tr`
   background-color: white;
 `;
-const StyledTd = styled.td`
+export const StyledTd = styled.td`
   color: ${props => props.color};
 `;
-export { StyledTable, StyledTd, StyledTr, StyledNodataTr, StyledTableCotainer, StyledUncontrolledTooltip };
+
+export const StyledDropdownToggle = styled(DropdownToggle)`
+  color: #007bff;
+  border-color: #007bff;
+  background-color: transparent;
+  &.btn-secondary.dropdown-toggle {
+    color: #007bff;
+    border-color: #007bff;
+    background-color: transparent;
+  }
+  &:hover,
+  &:focus,
+  &.btn-secondary:not(:disabled):not(.disabled):active {
+    border-color: #007bff;
+    background-color: #007bff;
+    color: white;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+`;
+export const StlyedActionPhoneContainer = styled.div`
+  display: inline-flex;
+`;
+export const StyledDropdownItem = styled(DropdownItem)`
+  padding: 0 7px;
+`;

@@ -85,6 +85,7 @@ const zh = {
   'getDevice.fall': '取得設備失敗',
   // connectTable
   'connectTable.status': '狀態',
+  'connectTable.action': '操作',
   'connectTable.name': '名字',
   'connectTable.description': '描述',
   'connectTable.userConnective': '連接者',

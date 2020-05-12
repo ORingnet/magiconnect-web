@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { padSize } from 'utility/app/rwd';
 const StyledHamburger = styled.div`
   cursor: pointer;
   transform: rotate(0);
@@ -7,7 +8,7 @@ const StyledHamburger = styled.div`
   height: 30px;
   position: relative;
   display: none;
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     display: block;
   }
   span {

@@ -83,6 +83,7 @@ const en = {
   'myConnect.header.search': 'Search',
   // ConnectTable
   'connectTable.status': 'Status',
+  'connectTable.action': 'Action',
   'connectTable.name': 'Name',
   'connectTable.description': 'Description',
   'connectTable.userConnective': 'User Connective',

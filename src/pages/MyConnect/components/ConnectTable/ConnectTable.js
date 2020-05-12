@@ -2,16 +2,28 @@ import React, { Fragment } from 'react';
 import { FormattedHTMLMessage, FormattedMessage, injectIntl } from 'react-intl';
 import switchStatus from 'components/SwitchStatus';
 import Spinner from 'components/Spinner';
+import ModifyMachineModal from 'components/ModifyMachineModal';
+import DeleteMachineModal from 'components/DeleteMachineModal';
 import Pagination from 'rc-pagination';
-import { CustomInput } from 'reactstrap';
+import DisconnectAction from './DisconnectAction';
+import ConnectAction from './ConnectAction';
+import ModifyModal from './ModifyModal';
+import LinkToLogs from './LinkToLogs';
+import DeleteAction from './DeleteAction';
+import { pad } from 'utility/app/rwd';
+
+import { UncontrolledDropdown, DropdownMenu, DropdownItem } from 'reactstrap';
 import {
   StyledTableCotainer,
   StyledTable,
   StyledTd,
   StyledTr,
   StyledNodataTr,
-  StyledUncontrolledTooltip
+  StyledUncontrolledTooltip,
+  StyledDropdownToggle,
+  StlyedActionPhoneContainer
 } from './StyledConnectTable';
+
 const connectTable = ({
   getAllMachineIsLoading,
   machines,
@@ -20,11 +32,16 @@ const connectTable = ({
   intl,
   connectMachId,
   currentPage,
-  changePage
+  changePage,
+  windowWidth,
+  modifyMachine,
+  toggleModifyMachineModal,
+  modifyMachineModalIsOpen,
+  modifyMachineObj
 }) => {
   const renderNodata = (
     <StyledNodataTr>
-      <td colSpan='8'>
+      <td colSpan='9'>
         <FormattedMessage id='connectTable.nodata' />
       </td>
     </StyledNodataTr>
@@ -46,7 +63,40 @@ const connectTable = ({
       });
     }
   };
-
+  const renderIsConnect = machine => {
+    if (machine.mach_status === 'Connected') {
+      return <DisconnectAction machineObj={machine} windowWidth={windowWidth} />;
+    }
+    return <ConnectAction machineObj={machine} windowWidth={windowWidth} />;
+  };
+  const renderAction = machine => {
+    if (windowWidth <= pad) {
+      return (
+        <StlyedActionPhoneContainer>
+          {renderIsConnect(machine)}
+          <ModifyModal machineObj={machine} windowWidth={windowWidth} />
+          <LinkToLogs machineObj={machine} windowWidth={windowWidth} />
+          <DeleteAction machineObj={machine} windowWidth={windowWidth} />
+        </StlyedActionPhoneContainer>
+      );
+    }
+    return (
+      <UncontrolledDropdown size='sm'>
+        <StyledDropdownToggle caret color='primary'>
+          <FormattedHTMLMessage id='connectTable.action' />
+        </StyledDropdownToggle>
+        <DropdownMenu>
+          {renderIsConnect(machine)}
+          <DropdownItem divider />
+          <ModifyModal machineObj={machine} windowWidth={windowWidth} />
+          <DropdownItem divider />
+          <LinkToLogs machineObj={machine} windowWidth={windowWidth} />
+          <DropdownItem divider />
+          <DeleteAction machineObj={machine} windowWidth={windowWidth} />
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    );
+  };
   const renderPagination = () => {
     if (machines.length > 0) {
       const filterMachines = machines.filter(machine => {
@@ -102,10 +152,8 @@ const connectTable = ({
           .map(machine => (
             <StyledTr key={machine.mach_id} ischecked={machine.ischecked}>
               <td>
-                <CustomInput
-                  type='radio'
-                  name='machineRadio'
-                  id={machine.mach_id}
+                <input
+                  type='checkbox'
                   checked={machine.ischecked}
                   onChange={() => toggleMachineChecked(machine.mach_id)}
                 />
@@ -118,6 +166,7 @@ const connectTable = ({
                 {renderImg(machine.mach_status)}
                 {renderFindSearchValue(intl.formatMessage({ id: `connectTable.${machine.mach_status}` }))}
               </StyledTd>
+              <td data-title={intl.formatMessage({ id: 'connectTable.action' })}>{renderAction(machine)}</td>
               <td
                 data-title={intl.formatMessage({ id: 'connectTable.name' })}
                 id={`tooltipName${machine.mach_id}`}
@@ -173,7 +222,7 @@ const connectTable = ({
     }
     return (
       <StyledNodataTr>
-        <td colSpan='8'>
+        <td colSpan='9'>
           <Spinner />
         </td>
       </StyledNodataTr>
@@ -189,6 +238,7 @@ const connectTable = ({
           <tr>
             <th />
             <FormattedHTMLMessage tagName='th' id='connectTable.status' />
+            <FormattedHTMLMessage tagName='th' id='connectTable.action' />
             <FormattedHTMLMessage tagName='th' id='connectTable.name' />
             <FormattedHTMLMessage tagName='th' id='connectTable.description' />
             <FormattedHTMLMessage tagName='th' id='connectTable.userConnective' />
@@ -200,6 +250,15 @@ const connectTable = ({
         <tbody>{renderMachines()}</tbody>
       </StyledTable>
       {renderPagination()}
+      <ModifyMachineModal
+        modifyWay='edit'
+        modifyMachine={modifyMachine}
+        machineObj={modifyMachineObj}
+        isOpen={modifyMachineModalIsOpen}
+        toggleModal={toggleModifyMachineModal}
+        title='Edit My Gateway'
+      />
+      <DeleteMachineModal />
     </StyledTableCotainer>
   );
 };

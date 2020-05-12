@@ -35,10 +35,16 @@ export const actionCreators = {
     dispatch({ type: actionTypes.TOGGLE_MAP });
   },
   toggleMachineChecked: machineId => dispatch => {
-    dispatch({ type: actionTypes.TOGGLE_MACHINE_CHECKED, machineId: machineId });
+    dispatch({ type: actionTypes.TOGGLE_MACHINE_CHECKED, machineId });
   },
   toggleCopyMachineIdModal: () => dispatch => {
     dispatch({ type: actionTypes.TOGGLE_COPY_MACHINE_ID_MODAL });
+  },
+  toggleModifyMachineModal: machineObj => dispatch => {
+    dispatch({ type: actionTypes.TOGGLE_MODIFY_MACHINE_MODAL, machineObj });
+  },
+  toggleDeleteMachineModal: deleteMachineArr => dispatch => {
+    dispatch({ type: actionTypes.TOGGLE_DELETE_MACHINE_MODAL, deleteMachineArr });
   },
   searchMachineAction: searchValue => dispatch => {
     dispatch({ type: actionTypes.SEARCH_MACHINE, searchValue: searchValue });
@@ -180,12 +186,12 @@ export const actionCreators = {
     return true;
   },
   // 03-3 delete machine about mach_id
-  deleteMachine: machId => async (dispatch, getState) => {
+  deleteMachine: () => async (dispatch, getState) => {
     // 確認是否有連線
-    const connectMachId = getState().app.connectMachId;
-    const connectMachName = getState().app.connectMachName;
-    if (connectMachId === machId) {
-      const responseData = await fetchGetMachineDisConnect(connectMachId);
+    const { connectMachId, connectMachName, deleteMachineArr } = getState().app;
+    const machineIsConnected = deleteMachineArr.find(machine => machine.mach_id === connectMachId);
+    if (machineIsConnected) {
+      const responseData = await fetchGetMachineDisConnect(machineIsConnected.mach_id);
       if (responseData.returnCode !== '00') {
         toast.error(
           <Fragment>
@@ -217,22 +223,42 @@ export const actionCreators = {
       );
     }
     //開始刪除
-    const responseData = await fetchDeleteMachineInfoByMachIdService(machId);
-    if (responseData.returnCode !== '00') {
-      toast.error(
+    const responseDataArr = await Promise.all(
+      deleteMachineArr.map(machine => fetchDeleteMachineInfoByMachIdService(machine.mach_id))
+    );
+    responseDataArr.forEach((responseData, i) => {
+      if (responseData.returnCode !== '00') {
+        toast.error(
+          <Fragment>
+            <span>{deleteMachineArr[i].mach_name},</span>
+            <FormattedMessage id='common.delete.fail' />
+            <span>, {responseData.message}</span>
+          </Fragment>,
+          {
+            position: toast.POSITION.TOP_RIGHT
+          }
+        );
+      } else {
+        dispatch({ type: actionTypes.RECEIVE_DELETE_MACHINE, machId: deleteMachineArr[i].mach_id });
+      }
+    });
+    const successDeleteArr = responseDataArr.filter(responseData => responseData.returnCode === '00');
+    if (successDeleteArr.length === deleteMachineArr.length) {
+      toast.success(<FormattedMessage id='common.delete.success' />, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } else {
+      toast.warn(
         <Fragment>
-          <FormattedMessage id='common.delete.fail' />
-          <span>, {responseData.message}</span>
+          {successDeleteArr.map((machine, i) => (
+            <span key={`successDelete-${i}`}>{machine.mach_name}, </span>
+          ))}
+          <FormattedMessage id='common.delete.success' />
         </Fragment>,
         {
           position: toast.POSITION.TOP_RIGHT
         }
       );
-    } else {
-      toast.success(<FormattedMessage id='common.delete.success' />, {
-        position: toast.POSITION.TOP_RIGHT
-      });
-      dispatch({ type: actionTypes.RECEIVE_DELETE_MACHINE, machId: machId });
     }
   },
   // 04-1 connect machines of mach_id

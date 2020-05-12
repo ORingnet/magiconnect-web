@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { padSize } from 'utility/app/rwd';
 const StyledContainer = styled.div`
   padding: 10px 32px;
   display: flex;
@@ -14,15 +15,8 @@ const StyledTitle = styled.p`
 `;
 const StyledFuncContainer = styled.div`
   display: flex;
-  @media (max-width: 1024px) {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 5px 0;
-    justify-content: space-around;
-    z-index: 1;
-    display: ${props => (props.mobilenone ? 'none' : 'flex')};
+  @media (max-width: ${padSize}) {
+    display: none;
   }
 `;
 

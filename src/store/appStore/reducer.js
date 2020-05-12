@@ -15,6 +15,10 @@ const initialState = {
   addConnectIsOpen: false,
   showNewsIsOpen: false,
   showMapIsOpen: false,
+  modifyMachineModalIsOpen: false,
+  modifyMachineObj: {},
+  deleteMachineModalIsOpen: false,
+  deleteMachineArr: [],
   searchValue: '',
   getAccountInfoStatus: false,
   getAllMachineIsLoading: true,
@@ -59,7 +63,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.TOGGLE_MACHINE_CHECKED: {
       const newMachines = state.machines.map(machine => ({
         ...machine,
-        ischecked: machine.mach_id === action.machineId ? !machine.ischecked : false
+        ischecked: machine.mach_id === action.machineId ? !machine.ischecked : machine.ischecked
       }));
       return {
         ...state,
@@ -70,6 +74,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         copyMachineIdModalIsOpen: !state.copyMachineIdModalIsOpen
+      };
+    }
+    case actionTypes.TOGGLE_MODIFY_MACHINE_MODAL: {
+      return {
+        ...state,
+        modifyMachineModalIsOpen: !state.modifyMachineModalIsOpen,
+        modifyMachineObj: action.machineObj ? action.machineObj : {}
+      };
+    }
+    case actionTypes.TOGGLE_DELETE_MACHINE_MODAL: {
+      return {
+        ...state,
+        deleteMachineModalIsOpen: !state.deleteMachineModalIsOpen,
+        deleteMachineArr: action.deleteMachineArr ? action.deleteMachineArr : []
       };
     }
     case actionTypes.SEARCH_MACHINE: {

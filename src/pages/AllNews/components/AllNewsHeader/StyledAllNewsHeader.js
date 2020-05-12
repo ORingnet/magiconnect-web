@@ -6,7 +6,7 @@ const StyledBackground = styled.div`
   border-top: 1px solid #ccc;
   padding: 0.5rem 1rem;
   display: flex;
-  @media (max-width: 1024px) {
+  @media (max-width: ${padSize}) {
     position: fixed;
     left: 0;
     right: 0;
@@ -29,13 +29,13 @@ const StyledFuncBox = styled.div`
   }
   &:first-child {
     margin-right: 3rem;
-    @media (max-width: 1024px) {
+    @media (max-width: ${padSize}) {
       margin-right: 0;
     }
   }
   &:not:first-child {
     margin-right: 1.5rem;
-    @media (max-width: 1024px) {
+    @media (max-width: ${padSize}) {
       margin-right: 0;
     }
   }
