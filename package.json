@@ -2,9 +2,10 @@
   "name": "my-magic-connect",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://aiko3310.github.io/connect-test2",
   "dependencies": {
     "@mapbox/mapbox-gl-language": "^0.10.0",
+    "@react-hook/window-size": "^2.0.4",
     "bootstrap": "^4.3.1",
     "copy-to-clipboard": "^3.3.1",
     "history": "^4.9.0",
