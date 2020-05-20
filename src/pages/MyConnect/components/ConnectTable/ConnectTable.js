@@ -64,10 +64,10 @@ const connectTable = ({
     }
   };
   const renderIsConnect = machine => {
-    if (machine.mach_status === 'Connected') {
+    if (machine.mach_status === 'Connected' || machine.mach_status === 'Connecting') {
       return <DisconnectAction machineObj={machine} windowWidth={windowWidth} />;
     }
-    return <ConnectAction machineObj={machine} windowWidth={windowWidth} />;
+    return <ConnectAction machineObj={machine} windowWidth={windowWidth} changePage={changePage} />;
   };
   const renderAction = machine => {
     if (windowWidth <= pad) {
