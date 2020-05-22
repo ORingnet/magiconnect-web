@@ -7,16 +7,8 @@ import { FormattedMessage } from 'react-intl';
 import { pad } from 'utility/app/rwd';
 import { StyledDropdownItem } from '../StyledConnectTable';
 import disconnectIcon from 'assets/img/myConnect/disconnect.svg';
-import FixedLoading from 'components/FixedLoading';
 import FuncBox from '../FuncBox';
-const DisconnectAction = ({
-  machineObj,
-  accountMsg,
-  windowWidth,
-  connectMachId,
-  disconnectMachine,
-  disconnectMachineIsLoading
-}) => {
+const DisconnectAction = ({ machineObj, accountMsg, windowWidth, connectMachId, disconnectMachine }) => {
   const checkMachineIsConnect = () => {
     if (machineObj.mach_status === 'updating') {
       toast.error(<FormattedMessage id='myConnect.header.updating.message' />, {
@@ -43,24 +35,20 @@ const DisconnectAction = ({
   const handleDisconnect = () => {
     disconnectMachine(machineObj.mach_id);
   };
-  const renderIsLoading = () => {
-    if (disconnectMachineIsLoading) {
-      return <FixedLoading />;
-    }
-  };
+
   if (windowWidth <= pad) {
     return (
       <Fragment>
         <FuncBox imgSrc={disconnectIcon} clickFunc={checkMachineIsConnect} />
-        {renderIsLoading()}
       </Fragment>
     );
   }
   return (
-    <StyledDropdownItem onClick={checkMachineIsConnect}>
-      <FormattedMessage id='myConnect.header.disconnect' />
-      {renderIsLoading()}
-    </StyledDropdownItem>
+    <Fragment>
+      <StyledDropdownItem onClick={checkMachineIsConnect}>
+        <FormattedMessage id='myConnect.header.disconnect' />
+      </StyledDropdownItem>
+    </Fragment>
   );
 };
 export default connect(

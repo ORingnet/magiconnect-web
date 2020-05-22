@@ -46,6 +46,7 @@ const connectTable = ({
       </td>
     </StyledNodataTr>
   );
+
   const renderFindSearchValue = string => {
     if (string) {
       return [...string].map((datum, i) => {

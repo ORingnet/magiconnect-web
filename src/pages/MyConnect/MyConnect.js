@@ -8,6 +8,7 @@ import { injectIntl } from 'react-intl';
 import { continueGetMachineTime } from 'utility/app/timeInterval';
 import ConnectFunc from './components/ConnectFunc';
 import ConnectTable from './components/ConnectTable';
+import FixedLoading from 'components/FixedLoading';
 import ActiveConnection from './components/ActiveConnection';
 import { useWindowWidth } from '@react-hook/window-size/throttled';
 
@@ -146,6 +147,11 @@ const MyConnect = ({
     setCurrentPage(i);
     setChangePage(true);
   };
+  const renderIsLoading = () => {
+    if (appState.disconnectMachineIsLoading) {
+      return <FixedLoading />;
+    }
+  };
   return (
     <Fragment>
       <ConnectFunc changePage={handlePageChange} />
@@ -164,6 +170,7 @@ const MyConnect = ({
         modifyMachineObj={appState.modifyMachineObj}
       />
       <ActiveConnection />
+      {renderIsLoading()}
     </Fragment>
   );
 };

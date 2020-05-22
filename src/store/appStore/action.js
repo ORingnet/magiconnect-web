@@ -78,12 +78,20 @@ export const actionCreators = {
         ...machine,
         ischecked: machine.mach_connBy === userEmail
       }));
-      const findHaveConnceted = machines.find(
-        machine => machine.mach_connBy === userEmail && machine.mach_status === 'Connected'
-      );
-
       dispatch({ type: actionTypes.RECEIVE_GET_ALL_MACHINE, machines });
-      if (findHaveConnceted && connectMachine) {
+      const findHaveConnceted = machines.find(
+        machine =>
+          machine.mach_connBy === userEmail &&
+          (machine.mach_status === 'Connected' || machine.mach_status === 'Connecting')
+      );
+      if (findHaveConnceted && findHaveConnceted.mach_status === 'Connecting') {
+        dispatch({
+          type: actionTypes.RECEIVE_CONNECTED_MACHINE,
+          connectMachId: findHaveConnceted.mach_id,
+          connectMachName: findHaveConnceted.mach_name
+        });
+      }
+      if (findHaveConnceted && findHaveConnceted.mach_status === 'Connected' && connectMachine) {
         getDevice(findHaveConnceted);
       }
     }
@@ -110,7 +118,10 @@ export const actionCreators = {
         for (let machId in result.data) {
           machines[machId] = result.data[machId];
           // 被斷線處理
-          if (connectMachId === machId && result.data[machId].mach_status !== 'Connected') {
+          if (
+            connectMachId === machId &&
+            (result.data[machId].mach_status !== 'Connected' && result.data[machId].mach_status !== 'Connecting')
+          ) {
             toast.warn(
               <Fragment>
                 <span className='mr-2'>{result.data[machId].mach_name}</span>
@@ -362,6 +373,8 @@ export const actionCreators = {
     }
     dispatch({
       type: actionTypes.RECEIVE_CONNECT_MACHINE,
+      connectMachId: machId,
+      connectMachName: machName,
       machineConnectData: machineConnectData.data
     });
   },

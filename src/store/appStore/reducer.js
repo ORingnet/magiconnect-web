@@ -288,6 +288,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         connectMachineIsLoading: false,
+        connectMachId: action.connectMachId,
+        connectMachName: action.connectMachName,
         machines: newMachines
       };
     }
