@@ -80,7 +80,9 @@ const en = {
   'myConnect.header.disconnect': 'Disconnect',
   'myConnect.header.disconnect.selfConnected': 'You can only disconnect the connected machine',
   'myConnect.header.disconnect.connected': 'You can only disconnect the connecting or connected machine',
+  'myConnect.header.binding': 'Binding',
   'myConnect.header.search': 'Search',
+  'myConnect.header.filter.macineCreator': 'Filter out that the machine creator is you',
   // ConnectTable
   'connectTable.status': 'Status',
   'connectTable.action': 'Action',

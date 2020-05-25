@@ -38,7 +38,13 @@ const MyConnect = ({
 
   // 排序+搜尋
   const sortMachineArr = useCallback(() => {
-    const filterMachines = appState.machines.filter(machine => {
+    const filterMachineCreator = appState.machines.filter(machine => {
+      if (appState.searchFilter.machineCreator) {
+        return machine.mach_creator === appState.accountMsg.acc_mail;
+      }
+      return machine;
+    });
+    const filterMachines = filterMachineCreator.filter(machine => {
       if (appState.searchValue !== '') {
         const request = appState.searchValue.toLowerCase();
         const checkHaveData = data => (data ? data.toLowerCase().includes(request) : false);
@@ -91,7 +97,14 @@ const MyConnect = ({
     });
     const sortMachine = setMachinesSortValue.sort((a, b) => (a.sortValue > b.sortValue ? -1 : 1));
     return sortMachine;
-  }, [appState.connectMachId, appState.machines, appState.searchValue, intl]);
+  }, [
+    appState.accountMsg.acc_mail,
+    appState.connectMachId,
+    appState.machines,
+    appState.searchFilter.machineCreator,
+    appState.searchValue,
+    intl
+  ]);
 
   // 持續取得
   useEffect(() => {
@@ -148,7 +161,8 @@ const MyConnect = ({
     setChangePage(true);
   };
   const renderIsLoading = () => {
-    if (appState.disconnectMachineIsLoading) {
+    const { bindingIsLoading, disconnectMachineIsLoading } = appState;
+    if (disconnectMachineIsLoading || bindingIsLoading) {
       return <FixedLoading />;
     }
   };

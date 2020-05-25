@@ -12,4 +12,7 @@ export const StyledFuncBox = styled.div`
   img {
     width: 100%;
   }
+  @media (max-width: 385px) {
+    margin-bottom: 10px;
+  }
 `;

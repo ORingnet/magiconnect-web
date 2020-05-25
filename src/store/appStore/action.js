@@ -19,7 +19,8 @@ import {
   fetchGetMachineLogs,
   fetchGetNewsService,
   fetchGetCheckUserStatusService,
-  fetchGetRegisterIdService
+  fetchGetRegisterIdService,
+  fetchGetBindingService
 } from '../../utility/app/appClient';
 export const actionCreators = {
   toggleSiderbar: () => dispatch => {
@@ -45,6 +46,9 @@ export const actionCreators = {
   },
   toggleDeleteMachineModal: deleteMachineArr => dispatch => {
     dispatch({ type: actionTypes.TOGGLE_DELETE_MACHINE_MODAL, deleteMachineArr });
+  },
+  toggleFilterMachineCreator: () => dispatch => {
+    dispatch({ type: actionTypes.TOGGLE_FILTER_MACHINE_CREATOR });
   },
   searchMachineAction: searchValue => dispatch => {
     dispatch({ type: actionTypes.SEARCH_MACHINE, searchValue: searchValue });
@@ -544,5 +548,27 @@ export const actionCreators = {
       return responseData.data.id;
     }
     return false;
+  },
+  // 12-1
+  bindingAction: machine => async dispatch => {
+    dispatch({ type: actionTypes.REQUEST_BINDED_START });
+    const responseData = await fetchGetBindingService(machine.mach_id);
+    if (responseData.returnCode !== '00') {
+      toast.error(<FormattedMessage id='myConnect.header.binding.fail' />, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    } else {
+      if (responseData.data.binded) {
+        toast.success(<FormattedMessage id='myConnect.header.binding.success' />, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        dispatch({ type: actionTypes.RECEIVE_BINDED, machine });
+      } else {
+        toast.error(<FormattedMessage id='myConnect.header.binding.fail' />, {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      }
+    }
+    dispatch({ type: actionTypes.REQUEST_BINDED_END });
   }
 };

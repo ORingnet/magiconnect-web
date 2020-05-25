@@ -80,7 +80,9 @@ const cn = {
   'myConnect.header.disconnect': '断线',
   'myConnect.header.disconnect.selfConnected': '只可以对自己连接的机台进行断线',
   'myConnect.header.disconnect.connected': '只可以对连接中或已连接状态下的机台进行断线',
+  'myConnect.header.binding': 'Binding',
   'myConnect.header.search': '搜索',
+  'myConnect.header.filter.macineCreator': '筛选出您创建的机台',
   // 取得 device
   'getDevice.fall': '取得设备失败',
   // connectTable

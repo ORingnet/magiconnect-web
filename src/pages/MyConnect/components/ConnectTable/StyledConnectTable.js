@@ -108,6 +108,11 @@ export const StyledDropdownToggle = styled(DropdownToggle)`
 `;
 export const StlyedActionPhoneContainer = styled.div`
   display: inline-flex;
+  @media (max-width: ${padSize}) {
+    width: calc(100% - 145px);
+    max-width: 80%;
+    flex-wrap: wrap;
+  }
 `;
 export const StyledDropdownItem = styled(DropdownItem)`
   padding: 0 7px;

@@ -80,7 +80,11 @@ const zh = {
   'myConnect.header.disconnect': '斷線',
   'myConnect.header.disconnect.selfConnected': '只可以對自己連線的機台進行斷線',
   'myConnect.header.disconnect.connected': '只可以對連線中或已連線狀態下的機台進行斷線',
+  'myConnect.header.binding': 'Binding',
+  'myConnect.header.binding.success': 'Binding 成功',
+  'myConnect.header.binding.fail': 'Binding 失敗',
   'myConnect.header.search': '搜尋',
+  'myConnect.header.filter.macineCreator': '篩選出您創建的機台',
   // 取得 device
   'getDevice.fall': '取得設備失敗',
   // connectTable

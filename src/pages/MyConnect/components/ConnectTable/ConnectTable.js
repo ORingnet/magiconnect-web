@@ -10,6 +10,7 @@ import ConnectAction from './ConnectAction';
 import ModifyModal from './ModifyModal';
 import LinkToLogs from './LinkToLogs';
 import DeleteAction from './DeleteAction';
+import BindAction from './BindAction';
 import { pad } from 'utility/app/rwd';
 
 import { UncontrolledDropdown, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -74,6 +75,7 @@ const connectTable = ({
     if (windowWidth <= pad) {
       return (
         <StlyedActionPhoneContainer>
+          <BindAction machineObj={machine} windowWidth={windowWidth} />
           {renderIsConnect(machine)}
           <ModifyModal machineObj={machine} windowWidth={windowWidth} />
           <LinkToLogs machineObj={machine} windowWidth={windowWidth} />
@@ -87,6 +89,8 @@ const connectTable = ({
           <FormattedHTMLMessage id='connectTable.action' />
         </StyledDropdownToggle>
         <DropdownMenu>
+          <BindAction machineObj={machine} windowWidth={windowWidth} />
+          <DropdownItem divider />
           {renderIsConnect(machine)}
           <DropdownItem divider />
           <ModifyModal machineObj={machine} windowWidth={windowWidth} />

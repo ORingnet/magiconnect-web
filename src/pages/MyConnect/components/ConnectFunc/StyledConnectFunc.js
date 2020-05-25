@@ -1,35 +1,36 @@
 import styled from 'styled-components';
 import { padSize } from 'utility/app/rwd';
-const StyledContainer = styled.div`
+export const StyledContainer = styled.div`
   padding: 10px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
-const StyledTitle = styled.p`
+export const StyledTitle = styled.p`
   color: white;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 0;
   letter-spacing: 2px;
 `;
-const StyledFuncContainer = styled.div`
+export const StyledFuncContainer = styled.div`
   display: flex;
   @media (max-width: ${padSize}) {
     display: none;
   }
 `;
 
-const StyledInputContainer = styled.div`
+export const StyledInputContainer = styled.div`
   background: white;
   display: flex;
   align-items: center;
   padding: 7px;
+  width: 100%;
   input {
     outline: none;
     border: none;
     padding: 0;
-    width: calc(100%);
+    width: 100%;
     &:focus {
       outline: none;
     }
@@ -41,5 +42,7 @@ const StyledInputContainer = styled.div`
     height: 27px;
   }
 `;
-
-export { StyledContainer, StyledTitle, StyledFuncContainer, StyledInputContainer };
+export const StyledSearchContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;

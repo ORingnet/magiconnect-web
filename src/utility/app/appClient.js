@@ -94,3 +94,8 @@ export const fetchGetCheckUserStatusService = () => {
   const url = `${process.env.REACT_APP_API_URL}/utility`;
   return fetchGet(url);
 };
+
+export const fetchGetBindingService = machId => {
+  const url = `${process.env.REACT_APP_API_URL}/machines/${machId}/binding/`;
+  return fetchGet(url);
+};

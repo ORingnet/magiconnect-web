@@ -20,6 +20,9 @@ const initialState = {
   deleteMachineModalIsOpen: false,
   deleteMachineArr: [],
   searchValue: '',
+  searchFilter: {
+    machineCreator: true
+  },
   getAccountInfoStatus: false,
   getAllMachineIsLoading: true,
   disconnectMachineIsLoading: false,
@@ -28,7 +31,8 @@ const initialState = {
   continuousGetAllMachineStatus: false,
   userStatus: 'Off-Line',
   copyMachineIdModalIsOpen: false,
-  copyMachineIdText: ''
+  copyMachineIdText: '',
+  bindingIsLoading: false
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -94,6 +98,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         searchValue: action.searchValue
+      };
+    }
+    case actionTypes.TOGGLE_FILTER_MACHINE_CREATOR: {
+      return {
+        ...state,
+        searchFilter: {
+          ...state.searchFilter,
+          machineCreator: !state.searchFilter.machineCreator
+        }
       };
     }
     case actionTypes.REFRESH_MACHINE: {
@@ -448,6 +461,29 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         userStatus: action.userStatus
+      };
+    }
+    // 12-1
+    case actionTypes.REQUEST_BINDED_START: {
+      return {
+        ...state,
+        bindingIsLoading: true
+      };
+    }
+    case actionTypes.RECEIVE_BINDED: {
+      // TODO
+      return {
+        ...state,
+        machines: state.machines.map(machine => ({
+          ...machine,
+          mach_bindBy: machine.mach_id === action.machine.mach_id ? state.accountMsg.acc_mail : ''
+        }))
+      };
+    }
+    case actionTypes.REQUEST_BINDED_END: {
+      return {
+        ...state,
+        bindingIsLoading: false
       };
     }
     default: {
