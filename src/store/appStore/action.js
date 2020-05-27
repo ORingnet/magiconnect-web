@@ -554,9 +554,15 @@ export const actionCreators = {
     dispatch({ type: actionTypes.REQUEST_BINDED_START });
     const responseData = await fetchGetBindingService(machine.mach_id);
     if (responseData.returnCode !== '00') {
-      toast.error(<FormattedMessage id='myConnect.header.binding.fail' />, {
-        position: toast.POSITION.TOP_RIGHT
-      });
+      toast.error(
+        <Fragment>
+          <FormattedMessage id='myConnect.header.binding.fail' />
+          <span>, {responseData.message}</span>
+        </Fragment>,
+        {
+          position: toast.POSITION.TOP_RIGHT
+        }
+      );
     } else {
       if (responseData.data.binded) {
         toast.success(<FormattedMessage id='myConnect.header.binding.success' />, {
@@ -564,9 +570,15 @@ export const actionCreators = {
         });
         dispatch({ type: actionTypes.RECEIVE_BINDED, machine });
       } else {
-        toast.error(<FormattedMessage id='myConnect.header.binding.fail' />, {
-          position: toast.POSITION.TOP_RIGHT
-        });
+        toast.error(
+          <Fragment>
+            <FormattedMessage id='myConnect.header.binding.fail' />
+            <span>, {responseData.message}</span>
+          </Fragment>,
+          {
+            position: toast.POSITION.TOP_RIGHT
+          }
+        );
       }
     }
     dispatch({ type: actionTypes.REQUEST_BINDED_END });
