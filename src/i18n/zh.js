@@ -81,6 +81,7 @@ const zh = {
   'myConnect.header.disconnect.selfConnected': '只可以對自己連線的機台進行斷線',
   'myConnect.header.disconnect.connected': '只可以對連線中或已連線狀態下的機台進行斷線',
   'myConnect.header.binding': 'Binding',
+  'myConnect.header.binding.machineConnected': '機台已連線或連線中狀態下不能 Binding',
   'myConnect.header.binding.success': 'Binding 成功',
   'myConnect.header.binding.fail': 'Binding 失敗',
   'myConnect.header.search': '搜尋',

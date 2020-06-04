@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from 'store/appStore/action';
 import { FormattedMessage } from 'react-intl';
+import { toast } from 'react-toastify';
 import FuncBox from '../FuncBox';
 import bindingIcon from 'assets/img/myConnect/icon-binding.svg';
 import unBindingIcon from 'assets/img/myConnect/icon-unBinding.svg';
@@ -11,7 +12,13 @@ import { pad } from 'utility/app/rwd';
 import { CustomInput } from 'reactstrap';
 const BindAction = ({ bindingAction, machineObj, windowWidth, accountMsg }) => {
   const handleBinding = () => {
-    bindingAction(machineObj);
+    if (machineObj.mach_status !== 'Connected' && machineObj.mach_status !== 'Connecting') {
+      bindingAction(machineObj);
+    } else {
+      toast.error(<FormattedMessage id='myConnect.header.binding.machineConnected' />, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   };
   const checkIsChecked = machineObj.mach_bindBy === accountMsg.acc_mail;
   if (windowWidth <= pad) {

@@ -471,7 +471,6 @@ const reducer = (state = initialState, action) => {
       };
     }
     case actionTypes.RECEIVE_BINDED: {
-      // TODO
       return {
         ...state,
         machines: state.machines.map(machine => ({

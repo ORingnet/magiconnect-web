@@ -81,6 +81,9 @@ const cn = {
   'myConnect.header.disconnect.selfConnected': '只可以对自己连接的机台进行断线',
   'myConnect.header.disconnect.connected': '只可以对连接中或已连接状态下的机台进行断线',
   'myConnect.header.binding': 'Binding',
+  'myConnect.header.binding.machineConnected': '机台已连接或连接中状态下不能 Binding',
+  'myConnect.header.binding.success': 'Binding 成功',
+  'myConnect.header.binding.fail': 'Binding 失败',
   'myConnect.header.search': '搜索',
   'myConnect.header.filter.macineCreator': '筛选出您创建的机台',
   // 取得 device
