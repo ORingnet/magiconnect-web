@@ -25,6 +25,9 @@ import {
   StyledContentBox,
   StyledPopupCotent
 } from './StyledShowMap';
+
+const isNumber = val => typeof val === 'number';
+
 const Map = ReactMapboxGl({ accessToken: process.env.REACT_APP_MAPBOX_KEY });
 const renderImg = mach_status => {
   const status = switchStatus(mach_status);
@@ -46,7 +49,10 @@ const ShowMap = ({
   // const [zoom, setZoom] = useState([6]);
   const [popup, setPopup] = useState(null);
   // const [center, setCenter] = useState([120.952987, 23.624366]);
-  const filterMachine = useCallback(() => machines.filter(machine => machine.mach_lng && machine.mach_lat), [machines]);
+  const filterMachine = useCallback(
+    () => machines.filter(machine => isNumber(machine.mach_lng) && isNumber(machine.mach_lat)),
+    [machines]
+  );
   const checkConnectSubmit = machineInfo => {
     if (userStatus === 'Off-Line' || machineInfo.mach_status === 'Off-Line' || machineInfo.mach_id === connectMachId) {
       return true;
