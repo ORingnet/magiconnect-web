@@ -194,7 +194,7 @@ const connectTable = ({
                 onClick={() => toggleMachineChecked(machine.mach_id)}
               >
                 {renderFindSearchValue(machine.mach_connBy)}
-                {renderTooltips(machine.mach_connBy.trim(), `tooltipConnBy${machine.mach_id}`)}
+                {renderTooltips(machine.mach_connBy, `tooltipConnBy${machine.mach_id}`)}
               </td>
               <td
                 data-title={intl.formatMessage({ id: 'connectTable.country' })}
