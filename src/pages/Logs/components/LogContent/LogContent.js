@@ -88,7 +88,7 @@ const LogContent = ({ machName, machId, logDialogs, getMachineLogs, searchValue,
 
           const renderResult = filterResult.map((log, i) => (
             <li key={i}>
-              <Moment format='YYYY/MM/DD hh:mm:ss'>{log.logs_time}</Moment>
+              <Moment format='YYYY/MM/DD HH:mm:ss'>{log.logs_time}</Moment>
               <StyledBadgeBox>
                 <StyledBadge color={renderLevel(log.level)}>
                   <FormattedMessage id={renderLevelText(log.level)} />

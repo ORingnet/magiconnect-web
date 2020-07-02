@@ -258,6 +258,7 @@ export const actionCreators = {
       }
     });
     const successDeleteArr = responseDataArr.filter(responseData => responseData.returnCode === '00');
+    console.log(successDeleteArr);
     if (successDeleteArr.length === deleteMachineArr.length) {
       toast.success(<FormattedMessage id='common.delete.success' />, {
         position: toast.POSITION.TOP_RIGHT
@@ -265,8 +266,8 @@ export const actionCreators = {
     } else {
       toast.warn(
         <Fragment>
-          {successDeleteArr.map((machine, i) => (
-            <span key={`successDelete-${i}`}>{machine.mach_name}, </span>
+          {successDeleteArr.map((responseData, i) => (
+            <span key={`successDelete-${i}`}>{responseData.data.mach_name}, </span>
           ))}
           <FormattedMessage id='common.delete.success' />
         </Fragment>,

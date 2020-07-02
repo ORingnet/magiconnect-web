@@ -10,7 +10,7 @@ export const StyledUl = styled.ul`
   list-style: none;
   padding: 0;
   time {
-    width: 160px;
+    width: 180px;
     display: inline-block;
     margin-right: 1rem;
   }
