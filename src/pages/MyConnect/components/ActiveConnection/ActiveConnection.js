@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from 'store/appStore/action';
@@ -47,6 +47,9 @@ const ActiveConnection = ({
       setDeviceArr([]);
     }
   }, [connectData.device]);
+  const deviceChecked = useCallback(() => {
+    return deviceArr.find(datum => datum.ischecked);
+  }, [deviceArr]);
   const handleChoiceDevice = deviceId => {
     setDeviceArr(prevState =>
       prevState.map(datum => ({
@@ -113,20 +116,16 @@ const ActiveConnection = ({
                 <ModifyDeviceModal
                   machId={connectMachId}
                   addDevice={addDevice}
-                  ischecked={deviceArr.find(datum => datum.ischecked)}
+                  ischecked={deviceChecked()}
                   modifyWay='add'
                 />
                 <ModifyDeviceModal
-                  device={deviceArr.find(datum => datum.ischecked)}
+                  device={deviceChecked()}
                   machId={connectMachId}
                   modifyDevice={modifyDevice}
                   modifyWay='edit'
                 />
-                <DeleteDeviceModal
-                  device={deviceArr.find(datum => datum.ischecked)}
-                  machId={connectMachId}
-                  deleteDevice={deleteDevice}
-                />
+                <DeleteDeviceModal device={deviceChecked()} machId={connectMachId} deleteDevice={deleteDevice} />
               </div>
             </StyledUserBox>
             <StyledConnectInfoContainer>
