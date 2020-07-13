@@ -125,7 +125,6 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked,
   const handleInvalid = inputItem => {
     return inputItem.needVaild ? inputItem.value === '' : false;
   };
-
   const handleSubmit = async () => {
     setIsLoading(true);
     let request = {

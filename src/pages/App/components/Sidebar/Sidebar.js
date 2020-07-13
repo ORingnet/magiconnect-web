@@ -99,7 +99,7 @@ const Sidebar = ({
         <img src={downloadIcon} alt='' />
         <StyledALink href={`${process.env.REACT_APP_API_URL}/utility/download`} fontsize='14'>
           <span>Download</span>
-          <span>windows version</span>
+          <span>Windows installer</span>
         </StyledALink>
       </StyledFuncBox>
       <StyledFuncBox>

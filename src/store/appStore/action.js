@@ -258,7 +258,6 @@ export const actionCreators = {
       }
     });
     const successDeleteArr = responseDataArr.filter(responseData => responseData.returnCode === '00');
-    console.log(successDeleteArr);
     if (successDeleteArr.length === deleteMachineArr.length) {
       toast.success(<FormattedMessage id='common.delete.success' />, {
         position: toast.POSITION.TOP_RIGHT
@@ -467,7 +466,7 @@ export const actionCreators = {
         ...request,
         devices_id: Object.values(responseData.data)[0].devices_id
       };
-      dispatch({ type: actionTypes.RECEIVE_ADD_DEVICE, device: device });
+      dispatch({ type: actionTypes.RECEIVE_ADD_DEVICE, device });
     }
   },
   // 06-2 modify device
@@ -574,7 +573,7 @@ export const actionCreators = {
         toast.error(
           <Fragment>
             <FormattedMessage id='myConnect.header.binding.fail' />
-            <span>, {responseData.message}</span>
+            <span>, {responseData.data.mach_name}</span>
           </Fragment>,
           {
             position: toast.POSITION.TOP_RIGHT

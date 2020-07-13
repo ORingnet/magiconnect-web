@@ -14,6 +14,7 @@ export const StyledTableCotainer = styled.div`
 export const StyledTable = styled(Table)`
   text-align: center;
   /* table-layout: fixed; */
+  margin-bottom: 2rem;
   thead {
     background: #29567e;
     th {
