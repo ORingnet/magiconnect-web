@@ -8,10 +8,10 @@ import { StyledShowMachineID } from './StyledModifyMachineModal';
 import { Col, CustomInput, FormGroup, FormFeedback, Label, Form } from 'reactstrap';
 /**
  * @constructor
- * 確認當長度超過 110 個字元的時候
+ * 確認當長度超過設定字元的時候
  * @param {string} string 要檢查的文字
  */
-const checkLength = string => string.length >= 110;
+const checkLength = (string, length) => string.length >= length;
 /**
  * @constructor
  * 檢查 mac 是不是符合規則
@@ -86,6 +86,7 @@ const ModifyModal = ({
       setFunc: setMachineName,
       needVaild: true,
       vaildfunc: checkLength,
+      stringLength: 50,
       placeholder: 'My connect'
     },
     {
@@ -140,6 +141,7 @@ const ModifyModal = ({
       setFunc: setDescription,
       needVaild: true,
       vaildfunc: checkLength,
+      stringLength: 200,
       placeholder: 'My connect describe'
     },
     {
@@ -148,6 +150,7 @@ const ModifyModal = ({
       setFunc: setCountry,
       needVaild: true,
       vaildfunc: checkLength,
+      stringLength: 100,
       placeholder: 'Taiwan'
     },
     {
@@ -156,6 +159,7 @@ const ModifyModal = ({
       setFunc: setCity,
       needVaild: true,
       vaildfunc: checkLength,
+      stringLength: 100,
       placeholder: 'Taipei'
     },
     {
@@ -164,6 +168,7 @@ const ModifyModal = ({
       setFunc: setRemark,
       needVaild: true,
       vaildfunc: checkLength,
+      stringLength: 100,
       placeholder: 'My connect remark'
     }
   ];
@@ -172,11 +177,11 @@ const ModifyModal = ({
       serialNumber === '' ||
       serialNumber.length !== 12 ||
       checkMacAddressOnly(MACAddress) ||
-      machineName.length >= 110 ||
-      description.length >= 110 ||
-      country.length >= 110 ||
-      city.length >= 110 ||
-      remark.length >= 110
+      machineName.length >= 50 ||
+      description.length >= 200 ||
+      country.length >= 100 ||
+      city.length >= 100 ||
+      remark.length >= 100
     );
   };
 
@@ -276,7 +281,7 @@ const ModifyModal = ({
           );
         }
       } else {
-        if (checkLength(inputItem.value)) {
+        if (checkLength(inputItem.value, inputItem.stringLength)) {
           vaildArr.push(
             <FormFeedback invalid='true' key={`${inputItem.name}Space`}>
               <FormattedMessage id={`machineModal.${inputItem.name}.invaild`} />

@@ -5,7 +5,7 @@ export const actionOptions = [
   },
   {
     value: 2,
-    formattedId: 'logAndNews.filters.action.updata'
+    formattedId: 'logAndNews.filters.action.update'
   },
   {
     value: 3,

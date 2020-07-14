@@ -116,7 +116,7 @@ const ActiveConnection = ({
                 <ModifyDeviceModal
                   machId={connectMachId}
                   addDevice={addDevice}
-                  ischecked={deviceChecked()}
+                  device={deviceChecked()}
                   modifyWay='add'
                 />
                 <ModifyDeviceModal

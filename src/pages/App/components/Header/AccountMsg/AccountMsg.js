@@ -42,7 +42,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
         toast.success(
           <Fragment>
             <FormattedMessage id='copy' />
-            <span className='mx-1'>{`ConnectClient ID: ${res}`}</span>
+            <span className='mx-1'>{`ConnectGateway ID: ${res}`}</span>
             <FormattedMessage id='success' />
           </Fragment>,
           { position: toast.POSITION.TOP_RIGHT }
@@ -51,7 +51,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
         toast.error(
           <Fragment>
             <FormattedMessage id='copy' />
-            ConnectClient ID
+            ConnectGateway ID
             <FormattedMessage id='fail' />
           </Fragment>,
           { position: toast.POSITION.TOP_RIGHT }

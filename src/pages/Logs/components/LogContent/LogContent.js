@@ -55,7 +55,7 @@ const LogContent = ({ machName, machId, logDialogs, getMachineLogs, searchValue,
     if (action === 1) {
       return `common.add`;
     } else if (action === 2) {
-      return `common.updata`;
+      return `common.update`;
     } else if (action === 3) {
       return `common.connect`;
     } else if (action === 4) {

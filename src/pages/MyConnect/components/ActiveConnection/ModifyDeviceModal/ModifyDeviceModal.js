@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import StyledInput from 'components/StyledInput';
 
@@ -13,7 +13,7 @@ import Modal from 'components/Modal';
 
 import { Col, Form, FormGroup, FormFeedback, Label, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { StyledDropdownItem, StyledUncontrolledDropdown, StyledFormGroup } from './StyledModifyDeviceModal';
-const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked, modifyWay }) => {
+const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, modifyWay }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
@@ -25,7 +25,7 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked,
   const [otherType, setOtherType] = useState('');
   const [proto, setProto] = useState('');
   useEffect(() => {
-    if (device) {
+    if (modifyWay === 'edit' && device) {
       setName(device.device_name ? device.device_name : '');
       setIp(device.device_ip ? device.device_ip : '');
       setMask(device.device_mask ? device.device_mask : '');
@@ -43,12 +43,11 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked,
       );
       setShowOtherType(device.device_type !== 'PLC' && device.device_type !== 'IPCAM' && device.device_type !== 'HMI');
     }
-  }, [device]);
+  }, [device, modifyWay]);
   const checkSubmit = () => {
     return name === '';
   };
-
-  const renderModifyWay = useCallback(() => {
+  const renderModifyWay = () => {
     if (modifyWay === 'add') {
       return {
         tooltipId: 'AddDevice',
@@ -56,7 +55,7 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked,
         modalTitle: 'Add Device',
         imgClassName: '',
         icon: addIcon,
-        boxIschecked: ischecked ? false : true
+        boxIschecked: device ? false : true
       };
     } else if (modifyWay === 'edit') {
       return {
@@ -68,7 +67,7 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked,
         boxIschecked: device ? true : false
       };
     }
-  }, [device, ischecked, modifyWay]);
+  };
   const handleToggleModal = () => {
     setIsOpen(!isOpen);
   };
@@ -127,7 +126,7 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked,
   };
   const handleSubmit = async () => {
     setIsLoading(true);
-    let request = {
+    const request = {
       device_descr: descr,
       device_ip: ip,
       device_mask: mask,
@@ -139,8 +138,8 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, ischecked,
     if (modifyWay === 'add') {
       await addDevice(machId, request);
     } else if (modifyWay === 'edit') {
-      request = { ...request, devices_id: device.devices_id };
-      await modifyDevice(machId, device.devices_id, request);
+      const editRequest = { ...request, devices_id: device.devices_id };
+      await modifyDevice(machId, device.devices_id, editRequest);
     }
     setIsLoading(false);
     handleCloseModal();
