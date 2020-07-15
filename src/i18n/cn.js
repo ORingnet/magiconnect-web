@@ -2,7 +2,7 @@ const cn = {
   'header.logout': '登出',
   'header.userManual': '用户手册',
   'header.userInfo': '用户信息',
-  'header.copy': '复制 ConnectClient ID',
+  'header.copy': '复制 ConnectGateway ID',
   copy: '复制',
   success: '成功',
   fail: '失败',
