@@ -50,6 +50,9 @@ export const actionCreators = {
   toggleFilterMachineCreator: () => dispatch => {
     dispatch({ type: actionTypes.TOGGLE_FILTER_MACHINE_CREATOR });
   },
+  toogleChioceDevice: deviceId => dispatch => {
+    dispatch({ type: actionTypes.TOGGLE_CHOICE_DEVICE, deviceId });
+  },
   searchMachineAction: searchValue => dispatch => {
     dispatch({ type: actionTypes.SEARCH_MACHINE, searchValue: searchValue });
   },

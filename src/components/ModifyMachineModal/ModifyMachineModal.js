@@ -17,13 +17,13 @@ const checkLength = (string, length) => string.length >= length;
  * 檢查 mac 是不是符合規則
  * @param {string} string 要檢查的文字
  */
-const checkMacAddressOnly = (string) => string !== '' && !/([A-Z0-9]{2}[:]){5}[A-Z0-9]{2}/g.test(string);
+const checkMacAddressOnly = string => string !== '' && !/([A-Z0-9]{2}[:]){5}[A-Z0-9]{2}/g.test(string);
 /**
  * @constructor
  * 檢查 SerialNumber 是不是符合規則
  * @param {string} string 要檢查的文字
  */
-const chcekSerialNumber = (string) => string === '' || string.length !== 12;
+const chcekSerialNumber = string => string === '' || string.length !== 12;
 /**
  * @constructor
  * 用在新增及修改的 modal
@@ -50,7 +50,7 @@ const ModifyModal = ({
   title,
   toggleCopyMachineIdModal,
   addNewMachineId,
-  copyMachineIdModalIsOpen,
+  copyMachineIdModalIsOpen
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [machineName, setMachineName] = useState('');
@@ -87,7 +87,7 @@ const ModifyModal = ({
       needVaild: true,
       vaildfunc: checkLength,
       stringLength: 50,
-      placeholder: 'My connect',
+      placeholder: 'My connect'
     },
     {
       name: 'serialNumber',
@@ -95,7 +95,7 @@ const ModifyModal = ({
       setFunc: setSerialNumber,
       needVaild: true,
       vaildfunc: chcekSerialNumber,
-      placeholder: intl.formatMessage({ id: 'machineModal.serialNumber.invaild12Letter' }),
+      placeholder: intl.formatMessage({ id: 'machineModal.serialNumber.invaild12Letter' })
     },
     {
       name: 'MACAddress',
@@ -103,19 +103,19 @@ const ModifyModal = ({
       setFunc: setMACAddress,
       needVaild: true,
       vaildfunc: checkMacAddressOnly,
-      placeholder: '00:99:0F:A9:AA:FF',
+      placeholder: '00:99:0F:A9:AA:FF'
     },
     {
       name: 'connectMode',
       value: connectMode,
       setFunc: setConnectMode,
-      type: 'select',
+      type: 'select'
     },
     {
       name: 'connectType',
       value: connectType,
       setFunc: setConnectType,
-      type: 'select',
+      type: 'select'
     },
     {
       name: 'lng',
@@ -124,7 +124,7 @@ const ModifyModal = ({
       type: 'number',
       min: -180,
       max: 180,
-      placeholder: '-180~180',
+      placeholder: '-180~180'
     },
     {
       name: 'lat',
@@ -133,7 +133,7 @@ const ModifyModal = ({
       type: 'number',
       min: -90,
       max: 90,
-      placeholder: '-90~90',
+      placeholder: '-90~90'
     },
     {
       name: 'description',
@@ -142,7 +142,7 @@ const ModifyModal = ({
       needVaild: true,
       vaildfunc: checkLength,
       stringLength: 200,
-      placeholder: 'My connect describe',
+      placeholder: 'My connect describe'
     },
     {
       name: 'country',
@@ -151,7 +151,7 @@ const ModifyModal = ({
       needVaild: true,
       vaildfunc: checkLength,
       stringLength: 100,
-      placeholder: 'Taiwan',
+      placeholder: 'Taiwan'
     },
     {
       name: 'city',
@@ -160,7 +160,7 @@ const ModifyModal = ({
       needVaild: true,
       vaildfunc: checkLength,
       stringLength: 100,
-      placeholder: 'Taipei',
+      placeholder: 'Taipei'
     },
     {
       name: 'remark',
@@ -169,8 +169,8 @@ const ModifyModal = ({
       needVaild: true,
       vaildfunc: checkLength,
       stringLength: 100,
-      placeholder: 'My connect remark',
-    },
+      placeholder: 'My connect remark'
+    }
   ];
   const checkSubmit = () => {
     return (
@@ -198,10 +198,10 @@ const ModifyModal = ({
       mach_country: country,
       mach_city: city,
       mach_sn: serialNumber,
-      mach_remark: remark,
+      mach_remark: remark
     };
     if (modifyWay === 'add') {
-      addMachine(request).then((result) => {
+      addMachine(request).then(result => {
         setIsLoading(false);
         if (result) {
           handleCloseModal();
@@ -209,7 +209,7 @@ const ModifyModal = ({
         }
       });
     } else if (modifyWay === 'edit') {
-      modifyMachine(machineObj.mach_id, request).then((result) => {
+      modifyMachine(machineObj.mach_id, request).then(result => {
         setIsLoading(false);
         if (result) {
           handleCloseModal();
@@ -245,16 +245,16 @@ const ModifyModal = ({
   const handleEnAndNumOnlyChange = (e, setFunc) => {
     setFunc(e.target.value.replace(/[\W]/g, ''));
   };
-  const handleMacAddressChange = (e) => {
+  const handleMacAddressChange = e => {
     setMACAddress(e.target.value.replace(/[^A-Z0-9:]/g, ''));
   };
   const handeInputChange = (e, setFunc) => {
     setFunc(e.target.value);
   };
-  const handleInvalid = (inputItem) => {
+  const handleInvalid = inputItem => {
     return inputItem.needVaild ? inputItem.vaildfunc(inputItem.value) : false;
   };
-  const renderInvalid = (inputItem) => {
+  const renderInvalid = inputItem => {
     if (inputItem.needVaild) {
       const vaildArr = [];
       if (inputItem.name === 'serialNumber') {
@@ -305,7 +305,7 @@ const ModifyModal = ({
       );
     }
   };
-  const renderInputArr = inputArr.map((inputItem) => {
+  const renderInputArr = inputArr.map(inputItem => {
     const renderInput = () => {
       if (inputItem.type === 'select') {
         return (
@@ -314,16 +314,16 @@ const ModifyModal = ({
             type='select'
             id={inputItem.name}
             value={inputItem.value}
-            onChange={(e) => handeInputChange(e, inputItem.setFunc)}
+            onChange={e => handeInputChange(e, inputItem.setFunc)}
           >
             <FormattedMessage id={`machineModal.${inputItem.name}.placeholder`}>
-              {(message) => (
+              {message => (
                 <option value='' disabled hidden>
                   {message}
                 </option>
               )}
             </FormattedMessage>
-            {selectObj[inputItem.name].map((selectItem) => (
+            {selectObj[inputItem.name].map(selectItem => (
               <option value={selectItem.value} key={selectItem.value} disabled={selectItem.disabled}>
                 {selectItem.value}
               </option>
@@ -337,7 +337,7 @@ const ModifyModal = ({
             bgsize='sm'
             value={inputItem.value}
             type='text'
-            onChange={(e) => handleEnAndNumOnlyChange(e, inputItem.setFunc)}
+            onChange={e => handleEnAndNumOnlyChange(e, inputItem.setFunc)}
             invalid={handleInvalid(inputItem)}
             placeholder={inputItem.placeholder}
           />
@@ -363,7 +363,7 @@ const ModifyModal = ({
             type='number'
             min={inputItem.min}
             max={inputItem.max}
-            onChange={(e) => handeNumberInputChange(e, inputItem.setFunc, inputItem.min, inputItem.max)}
+            onChange={e => handeNumberInputChange(e, inputItem.setFunc, inputItem.min, inputItem.max)}
             invalid={handleInvalid(inputItem)}
             placeholder={inputItem.placeholder}
           />
@@ -375,7 +375,7 @@ const ModifyModal = ({
           bgsize='sm'
           value={inputItem.value}
           type='text'
-          onChange={(e) => handeInputChange(e, inputItem.setFunc)}
+          onChange={e => handeInputChange(e, inputItem.setFunc)}
           invalid={handleInvalid(inputItem)}
           placeholder={inputItem.placeholder}
         />
