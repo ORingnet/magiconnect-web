@@ -25,7 +25,7 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, modifyWay 
   const [otherType, setOtherType] = useState('');
   const [proto, setProto] = useState('');
   useEffect(() => {
-    if (modifyWay === 'edit' && device) {
+    if (modifyWay === 'edit' && device && !isOpen) {
       setName(device.device_name ? device.device_name : '');
       setIp(device.device_ip ? device.device_ip : '');
       setMask(device.device_mask ? device.device_mask : '');
@@ -43,7 +43,7 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, modifyWay 
       );
       setShowOtherType(device.device_type !== 'PLC' && device.device_type !== 'IPCAM' && device.device_type !== 'HMI');
     }
-  }, [device, modifyWay]);
+  }, [device, modifyWay, isOpen]);
   const checkSubmit = () => {
     return name === '';
   };

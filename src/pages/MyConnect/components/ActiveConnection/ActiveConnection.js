@@ -35,9 +35,18 @@ const ActiveConnection = ({
   modifyDevice
 }) => {
   const [deviceArr, setDeviceArr] = useState([]);
+
   useEffect(() => {
     if (connectData.device.length > 0) {
-      setDeviceArr(connectData.device);
+      setDeviceArr(prevState => {
+        if (prevState.length > 0) {
+          return connectData.device.map(deviceDatum => {
+            const findDevice = prevState.find(prevDatum => prevDatum.devices_id === deviceDatum.devices_id);
+            return { ...deviceDatum, ischecked: findDevice ? findDevice.ischecked : false };
+          });
+        }
+        return connectData.device.map(deviceDatum => ({ ...deviceDatum, ischecked: false }));
+      });
     } else {
       setDeviceArr([]);
     }

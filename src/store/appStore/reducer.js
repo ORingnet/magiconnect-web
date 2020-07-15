@@ -390,10 +390,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.RECEIVE_GET_DEVICE: {
       return {
         ...state,
-        connectData: {
-          ...action.connectData,
-          device: action.connectData.device.map(connectDatum => ({ ...connectDatum, ischecked: false }))
-        },
+        connectData: action.connectData,
         connectMachineIsOpen: true
       };
     }
