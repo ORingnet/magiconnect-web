@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useCallback, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from 'store/appStore/action';
@@ -32,12 +32,26 @@ const ActiveConnection = ({
   accountMsg,
   deleteDevice,
   addDevice,
-  modifyDevice,
-  toogleChioceDevice
+  modifyDevice
 }) => {
-  const deviceChecked = connectData.device.find(datum => datum.ischecked);
+  const [deviceArr, setDeviceArr] = useState([]);
+  useEffect(() => {
+    if (connectData.device.length > 0) {
+      setDeviceArr(connectData.device);
+    } else {
+      setDeviceArr([]);
+    }
+  }, [connectData.device]);
+  const deviceChecked = useCallback(() => {
+    return deviceArr.find(datum => datum.ischecked);
+  }, [deviceArr]);
   const handleChoiceDevice = deviceId => {
-    toogleChioceDevice(deviceId);
+    setDeviceArr(prevState =>
+      prevState.map(datum => ({
+        ...datum,
+        ischecked: datum.devices_id === deviceId ? !datum.ischecked : false
+      }))
+    );
   };
   const renderTypeImg = type => {
     if (type === 'PLC') {
@@ -53,7 +67,7 @@ const ActiveConnection = ({
     if (connectMachineIsOpen) {
       const renderDevice = () => {
         if (connectData.device.length > 0) {
-          return connectData.device.map(datum => (
+          return deviceArr.map(datum => (
             <StyledDeviceContainer key={datum.devices_id}>
               <CustomInput
                 type='radio'
@@ -97,16 +111,16 @@ const ActiveConnection = ({
                 <ModifyDeviceModal
                   machId={connectMachId}
                   addDevice={addDevice}
-                  device={deviceChecked}
+                  device={deviceChecked()}
                   modifyWay='add'
                 />
                 <ModifyDeviceModal
-                  device={deviceChecked}
+                  device={deviceChecked()}
                   machId={connectMachId}
                   modifyDevice={modifyDevice}
                   modifyWay='edit'
                 />
-                <DeleteDeviceModal device={deviceChecked} machId={connectMachId} deleteDevice={deleteDevice} />
+                <DeleteDeviceModal device={deviceChecked()} machId={connectMachId} deleteDevice={deleteDevice} />
               </div>
             </StyledUserBox>
             <StyledConnectInfoContainer>

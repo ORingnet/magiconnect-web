@@ -388,33 +388,13 @@ const reducer = (state = initialState, action) => {
       };
     }
     case actionTypes.RECEIVE_GET_DEVICE: {
-      const connectData = () => {
-        if (state.connectData.device.length > 0) {
-          return action.connectData.device.map(connectDatum => {
-            const sameDatum = state.connectData.device.find(
-              stateConnectDatum => stateConnectDatum.devices_id === connectDatum.devices_id
-            );
-            return { ...connectDatum, ischecked: sameDatum ? sameDatum.ischecked : false };
-          });
-        }
-        return action.connectData.device.map(connectDatum => ({ ...connectDatum, ischecked: false }));
-      };
-      return {
-        ...state,
-        connectData: { ...action.connectData, device: connectData() },
-        connectMachineIsOpen: true
-      };
-    }
-    case actionTypes.TOGGLE_CHOICE_DEVICE: {
       return {
         ...state,
         connectData: {
-          ...state.connectData,
-          device: state.connectData.device.map(connectDatum => ({
-            ...connectDatum,
-            ischecked: connectDatum.devices_id === action.deviceId ? !connectDatum.ischecked : false
-          }))
-        }
+          ...action.connectData,
+          device: action.connectData.device.map(connectDatum => ({ ...connectDatum, ischecked: false }))
+        },
+        connectMachineIsOpen: true
       };
     }
     case actionTypes.RECEIVE_GET_DEVICE_FAIL: {
