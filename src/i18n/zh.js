@@ -2,7 +2,7 @@ const zh = {
   'header.logout': '登出',
   'header.userManual': '使用者手冊',
   'header.userInfo': '使用者資訊',
-  'header.copy': '複製 ConnectGateway ID',
+  'header.copy': '複製 ConnectClient ID',
   copy: '複製',
   success: '成功',
   fail: '失敗',

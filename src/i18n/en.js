@@ -2,7 +2,7 @@ const en = {
   'header.logout': 'Logout',
   'header.userManual': 'User manual',
   'header.userInfo': 'Account',
-  'header.copy': 'Copy ConnectGateway ID',
+  'header.copy': 'Copy ConnectClient ID',
   copy: 'Copy',
   success: 'completed',
   fail: 'failed',
