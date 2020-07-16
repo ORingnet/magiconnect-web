@@ -89,7 +89,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
           </StyledDropdownItem>
           <DropdownItem divider />
           <StyledDropdownItem>
-            <a href={`${process.env.REACT_APP_API_URL}/utility/download`}>Download windows version</a>
+            <a href={`${process.env.REACT_APP_API_URL}/utility/download`}>Download windows installer</a>
           </StyledDropdownItem>
         </DropdownMenu>
       </Dropdown>

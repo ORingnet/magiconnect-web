@@ -4,8 +4,8 @@ const en = {
   'header.userInfo': 'Account',
   'header.copy': 'Copy ConnectGateway ID',
   copy: 'Copy',
-  success: 'success',
-  fail: 'fail',
+  success: 'completed',
+  fail: 'failed',
   'app.isLoadingChinese': '驗證身份中...',
   'app.isLoadingEN': 'Verifying identity...',
   // common
