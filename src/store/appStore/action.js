@@ -210,7 +210,7 @@ export const actionCreators = {
       if (responseData.returnCode !== '00') {
         toast.error(
           <Fragment>
-            <span>{connectMachName}</span>
+            <span>{connectMachName} </span>
             <FormattedMessage id='disconnectMachine.fail' />
             <span>, {responseData.message}</span>
           </Fragment>,
@@ -245,7 +245,7 @@ export const actionCreators = {
       if (responseData.returnCode !== '00') {
         toast.error(
           <Fragment>
-            <span>{deleteMachineArr[i].mach_name},</span>
+            <span>{deleteMachineArr[i].mach_name} </span>
             <FormattedMessage id='common.delete.fail' />
             <span>, {responseData.message}</span>
           </Fragment>,
@@ -258,6 +258,7 @@ export const actionCreators = {
       }
     });
     const successDeleteArr = responseDataArr.filter(responseData => responseData.returnCode === '00');
+    console.log(successDeleteArr);
     if (successDeleteArr.length === deleteMachineArr.length) {
       toast.success(<FormattedMessage id='common.delete.success' />, {
         position: toast.POSITION.TOP_RIGHT
@@ -266,7 +267,7 @@ export const actionCreators = {
       toast.warn(
         <Fragment>
           {successDeleteArr.map((responseData, i) => (
-            <span key={`successDelete-${i}`}>{responseData.data.mach_name}, </span>
+            <span key={`successDelete-${i}`}>{responseData.data.mach_name} </span>
           ))}
           <FormattedMessage id='common.delete.success' />
         </Fragment>,

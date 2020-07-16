@@ -29,7 +29,7 @@ const en = {
   'common.edit.success': 'Editing completed',
   'common.edit.fail': 'Editing failed',
   'common.delete.success': 'Deletion completed',
-  'common.delete.fail': 'Deletion failed',
+  'common.delete.fail': 'deletion failed',
   'common.sureDelete': 'Are You Sure?',
   'common.sureDelete.content': 'Are you sure you want to delete',
   'common.sureDelete.end': '?',

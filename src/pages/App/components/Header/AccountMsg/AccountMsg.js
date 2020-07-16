@@ -51,7 +51,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
         toast.error(
           <Fragment>
             <FormattedMessage id='copy' />
-            ConnectGateway ID
+            <span className='mx-1'>ConnectGateway ID</span>
             <FormattedMessage id='fail' />
           </Fragment>,
           { position: toast.POSITION.TOP_RIGHT }
