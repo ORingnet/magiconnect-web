@@ -42,6 +42,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
         toast.success(
           <Fragment>
             <FormattedMessage id='copy' />
+            <span className='mx-1'>ConnectClient ID</span>
             <FormattedMessage id='success' />
           </Fragment>,
           { position: toast.POSITION.TOP_RIGHT }
@@ -88,7 +89,7 @@ const AccountMsg = ({ accountMsg, getAccountStatus, getAccountStatusId, userStat
           </StyledDropdownItem>
           <DropdownItem divider />
           <StyledDropdownItem>
-            <a href={`${process.env.REACT_APP_API_URL}/utility/download`}>Download windows installer</a>
+            <a href={`${process.env.REACT_APP_API_URL}/utility/download`}>Download Windows installer</a>
           </StyledDropdownItem>
         </DropdownMenu>
       </Dropdown>
