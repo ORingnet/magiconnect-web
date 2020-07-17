@@ -83,8 +83,9 @@ const ActiveConnection = ({
                 name='deviceRadio'
                 id={datum.devices_id}
                 checked={datum.ischecked}
-                onChange={() => handleChoiceDevice(datum.devices_id)}
+                onClick={() => handleChoiceDevice(datum.devices_id)}
                 className='d-inline'
+                readOnly
               />
               <li onClick={() => handleChoiceDevice(datum.devices_id)}>
                 {renderTypeImg(datum.device_type)}
