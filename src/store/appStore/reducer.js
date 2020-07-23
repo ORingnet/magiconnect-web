@@ -417,7 +417,7 @@ const reducer = (state = initialState, action) => {
     }
     case actionTypes.RECEIVE_MODIFY_DEVICE: {
       const newDevice = state.connectData.device.map(datum => {
-        if (datum.devices_id === action.deviceId) {
+        if (datum.device_id === action.deviceId) {
           return {
             ...datum,
             ...action.device
@@ -434,7 +434,7 @@ const reducer = (state = initialState, action) => {
       };
     }
     case actionTypes.RECEIVE_DELETE_DEVICE: {
-      const newDevice = state.connectData.device.filter(datum => datum.devices_id !== action.deviceId);
+      const newDevice = state.connectData.device.filter(datum => datum.device_id !== action.deviceId);
       return {
         ...state,
         connectData: {

@@ -56,17 +56,17 @@ export const fetchAddMachineDevices = (machId, request) => {
   const url = `${process.env.REACT_APP_API_URL}/machines/${machId}/devices/`;
   return fetchPost(url, request);
 };
-// 06-01 Get devices_id of devices from machines of mach_id
+// 06-01 Get device_id of devices from machines of mach_id
 export const fetchGetMachineDeviceInfo = (machId, deviceId) => {
   const url = `${process.env.REACT_APP_API_URL}/machines/${machId}/devices/${deviceId}/`;
   return fetchGet(url);
 };
-// 06-2 modify devices_id of devices from machines of mach_id
+// 06-2 modify device_id of devices from machines of mach_id
 export const fetchModifyMachineDeviceInfo = (machId, deviceId, request) => {
   const url = `${process.env.REACT_APP_API_URL}/machines/${machId}/devices/${deviceId}/`;
   return fetchPost(url, request);
 };
-// 06-3 delete devices_id of devices from machines of mach_id
+// 06-3 delete device_id of devices from machines of mach_id
 export const fetchDeleteMachineDeviceInfo = (machId, deviceId) => {
   const url = `${process.env.REACT_APP_API_URL}/machines/${machId}/devices/${deviceId}/`;
   return fetchDelete(url);

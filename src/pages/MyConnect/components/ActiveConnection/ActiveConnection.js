@@ -41,7 +41,7 @@ const ActiveConnection = ({
       setDeviceArr(prevState => {
         if (prevState.length > 0) {
           return connectData.device.map(deviceDatum => {
-            const findDevice = prevState.find(prevDatum => prevDatum.devices_id === deviceDatum.devices_id);
+            const findDevice = prevState.find(prevDatum => prevDatum.device_id === deviceDatum.device_id);
             return { ...deviceDatum, ischecked: findDevice ? findDevice.ischecked : false };
           });
         }
@@ -58,7 +58,7 @@ const ActiveConnection = ({
     setDeviceArr(prevState =>
       prevState.map(datum => ({
         ...datum,
-        ischecked: datum.devices_id === deviceId ? !datum.ischecked : false
+        ischecked: datum.device_id === deviceId ? !datum.ischecked : false
       }))
     );
   };
@@ -77,17 +77,17 @@ const ActiveConnection = ({
       const renderDevice = () => {
         if (connectData.device.length > 0) {
           return deviceArr.map(datum => (
-            <StyledDeviceContainer key={datum.devices_id}>
+            <StyledDeviceContainer key={datum.device_id}>
               <CustomInput
                 type='radio'
                 name='deviceRadio'
-                id={datum.devices_id}
+                id={datum.device_id}
                 checked={datum.ischecked}
-                onClick={() => handleChoiceDevice(datum.devices_id)}
+                onClick={() => handleChoiceDevice(datum.device_id)}
                 className='d-inline'
                 readOnly
               />
-              <li onClick={() => handleChoiceDevice(datum.devices_id)}>
+              <li onClick={() => handleChoiceDevice(datum.device_id)}>
                 {renderTypeImg(datum.device_type)}
                 <StyledDeviceDetail>
                   <span className='ml-3'>{datum.device_name}</span>

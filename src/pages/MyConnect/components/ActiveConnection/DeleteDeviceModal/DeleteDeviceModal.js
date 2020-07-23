@@ -11,7 +11,7 @@ const DeleteDeviceModal = ({ machId, device, deleteDevice }) => {
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    await deleteDevice(machId, device.devices_id);
+    await deleteDevice(machId, device.device_id);
     setIsLoading(false);
     setIsOpen(false);
   };

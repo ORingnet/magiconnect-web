@@ -138,8 +138,8 @@ const ModifyDeviceModal = ({ machId, device, addDevice, modifyDevice, modifyWay 
     if (modifyWay === 'add') {
       await addDevice(machId, request);
     } else if (modifyWay === 'edit') {
-      const editRequest = { ...request, devices_id: device.devices_id };
-      await modifyDevice(machId, device.devices_id, editRequest);
+      const editRequest = { ...request, device_id: device.device_id };
+      await modifyDevice(machId, device.device_id, editRequest);
     }
     setIsLoading(false);
     handleCloseModal();

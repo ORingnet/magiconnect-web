@@ -465,7 +465,7 @@ export const actionCreators = {
       });
       const device = {
         ...request,
-        devices_id: Object.values(responseData.data)[0].devices_id
+        device_id: Object.values(responseData.data)[0].device_id
       };
       dispatch({ type: actionTypes.RECEIVE_ADD_DEVICE, device });
     }
