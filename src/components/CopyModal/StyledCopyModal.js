@@ -29,7 +29,8 @@ const StyledModalFooter = styled(ModalFooter)`
   color: white;
   border: none;
   border-radius: unset;
-  justify-content: center;
+  display: block;
+  text-align: center;
 `;
 
 const StyledCopyButton = styled.button`
@@ -38,14 +39,15 @@ const StyledCopyButton = styled.button`
   padding: 5px 20%;
   background: transparent;
   color: white;
+  white-space: pre-wrap;
   &:hover {
     background-color: #6c757d;
     border-color: #6c757d;
   }
   &:disabled:hover {
     background: transparent;
-    border-color: white
-    cursor:not-allowed;
+    border-color: white;
+    cursor: not-allowed;
   }
   &:focus {
     outline: none;
