@@ -18,7 +18,7 @@ const Header = () => {
           <StyledImg src={logoSrc} alt='ORing MagicConnect' />
         </Link>
         <StyledSpan>Version</StyledSpan>
-        <StyledSpan>1.015</StyledSpan>
+        <StyledSpan>{process.env.REACT_APP_VERSION}</StyledSpan>
       </div>
       <StyledRightBar>
         <AccountMsg />
