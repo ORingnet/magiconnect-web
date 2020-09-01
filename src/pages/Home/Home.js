@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <StyledContainer>
       <StyledLogo src={logoImg} alt='' />
-      <p>系統版本 : 1.015</p>
+      <p>系統版本 : {process.env.REACT_APP_VERSION}</p>
       <StyledBanner />
       <StyledButton href={process.env.REACT_APP_LOGIN_URL}>
         <img src={ButtonImg} alt='' />
